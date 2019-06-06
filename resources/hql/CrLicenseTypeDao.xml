@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrLicenseTypeDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>licenseTypeId, licenseTypeName, licenseTypeCode, licenseTypeStatus</properties>
+			<fields>a.licenseTypeId, a.licenseTypeName, a.licenseTypeCode, a.licenseTypeStatus</fields>
+			<hql>from CrLicenseType a</hql>
+			<conditions>
+				<condition id="licenseTypeId" discribe="授权类型ID">
+					<params type="param">
+						<param name="licenseTypeId" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeId = ?</hql>
+				</condition>
+			
+				<condition id="licenseTypeName" discribe="授权类型名称">
+					<params type="param">
+						<param name="licenseTypeName" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeName like ?</hql>
+				</condition>
+				
+				<condition id="licenseTypeCode" discribe="授权类型编号">
+					<params type="param">
+						<param name="licenseTypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeCode like ?</hql>
+				</condition>
+				
+				<condition id="licenseTypeStatus" discribe="授权类型状态">
+					<params type="param">
+						<param name="licenseTypeStatus" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeStatus like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLicenseType</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>licenseTypeId, licenseTypeName, licenseTypeCode, licenseTypeStatus</properties>
+			<fields>a.licenseTypeId, a.licenseTypeName, a.licenseTypeCode, a.licenseTypeStatus</fields>
+			<hql>from CrLicenseType a</hql>
+			<conditions>
+				<condition id="licenseTypeId" discribe="授权类型ID">
+					<params type="param">
+						<param name="licenseTypeId" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeId = ?</hql>
+				</condition>
+			
+				<condition id="licenseTypeName" discribe="授权类型名称">
+					<params type="param">
+						<param name="licenseTypeName" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeName like ?</hql>
+				</condition>
+				
+				<condition id="licenseTypeCode" discribe="授权类型编号">
+					<params type="param">
+						<param name="licenseTypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeCode like ?</hql>
+				</condition>
+				
+				<condition id="licenseTypeStatus" discribe="授权类型状态">
+					<params type="param">
+						<param name="licenseTypeStatus" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeStatus = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLicenseType</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>licenseTypeId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrLicenseType a</hql>
+			<conditions>
+				<condition id="licenseTypeId" discribe="授权类型ID">
+					<params type="param">
+						<param name="licenseTypeId" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeId = ?</hql>
+				</condition>
+			
+				<condition id="licenseTypeName" discribe="授权类型名称">
+					<params type="param">
+						<param name="licenseTypeName" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeName like ?</hql>
+				</condition>
+				
+				<condition id="licenseTypeCode" discribe="授权类型编号">
+					<params type="param">
+						<param name="licenseTypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeCode like ?</hql>
+				</condition>
+				
+				<condition id="licenseTypeStatus" discribe="授权类型状态">
+					<params type="param">
+						<param name="licenseTypeStatus" type="java.lang.String" />
+					</params>
+					<hql>a.licenseTypeStatus = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLicenseType</className>
+		</query>
+	</dao>
+</web-query>

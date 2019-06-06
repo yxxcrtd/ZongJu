@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.BDic" table="B_DIC">
+		<id name="id" type="java.lang.String">
+			<column name="B_DIC_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="B_DIC_CODE" length="32">
+				<comment>数据字典编号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="B_DIC_NAME" length="128">
+				<comment>数据字典名称</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="B_DIC_ORDER">
+				<comment>数据字典排序</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="B_DIC_STATUS" length="32">
+				<comment>数据字典状态</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="B_DIC_INTERNATION_CODE" length="32">
+				<comment>国际化</comment>
+			</column>
+		</property>
+		<many-to-one name="dicClass" class="cn.digitalpublishing.po.BDicClass" fetch="select" lazy="false">
+			<column name="B_DIC_CLASS_ID" length="32">
+				<comment>数据字典分类ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

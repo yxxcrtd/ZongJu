@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.Watermark" table="T_WATERMARK">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+
+		<property name="content" type="java.lang.String">
+			<column name="WatermarkContent" length="400">
+				<comment>内容</comment>
+			</column>
+		</property>
+
+		<property name="font" type="java.lang.Integer">
+			<column name="WaterFont" length="4">
+				<comment>字体大小</comment>
+			</column>
+		</property>
+
+		<property name="active" type="java.lang.Integer">
+			<column name="WaterActive" length="4">
+				<comment>激活</comment>
+			</column>
+		</property>
+
+	</class>
+</hibernate-mapping>

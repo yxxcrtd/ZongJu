@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlFormula" table="CR_RL_FORMULA">
+		<comment>计算公式</comment>
+		<id name="formulaId" type="java.lang.String">
+			<column name="CR_FORMULA_ID" length="32">
+				<comment>版税公式ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="breakPoint" type="java.math.BigDecimal">
+			<column name="CR_BREAK_POINT" precision="10" scale="2">
+				<comment>分割值</comment>
+			</column>
+		</property>
+		<property name="rateValue" type="java.math.BigDecimal">
+			<column name="CR_RATE_VALUE" precision="10" scale="2">
+				<comment>比率值</comment>
+			</column>
+		</property>
+		<property name="formulaType" type="java.lang.String" length="32">
+			<column name="CR_FORMULA_TYPE">
+				<comment>公式类型</comment>
+			</column>
+		</property>
+		<many-to-one name="rlOwnerRoyalty" class="cn.digitalpublishing.po.CrRlOwnerRoyalty" fetch="select" lazy="false">
+			<column name="CR_RLO_ROYALTY_ID" length="32">
+				<comment>人员版税计算ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="subsidaryRight" class="cn.digitalpublishing.po.CrSubsidaryRight" fetch="select" lazy="false">
+			<column name="CR_SRLICENSE_ID" length="32">
+				<comment>附属权利ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

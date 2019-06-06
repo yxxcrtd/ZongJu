@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrCsrRelationship" table="CR_CSR_RELATIONSHIP">
+		<comment>国别附属权利关系</comment>
+		<id name="id" type="java.lang.String">
+			<column name="CSR_ID" length="32">
+				<comment>国别附属权利关系ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+<!-- 		<many-to-one name="country" class="cn.digitalpublishing.po.BCountry" fetch="select" lazy="false"> -->
+<!-- 			<column name="B_COUNTRY_ID" length="32"> -->
+<!-- 				<comment>国别ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+		<many-to-one name="subsidaryRight" class="cn.digitalpublishing.po.CrSubsidaryRight" fetch="select" lazy="false">
+			<column name="CR_SRLICENSE_ID" length="32">
+				<comment>附属权利ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

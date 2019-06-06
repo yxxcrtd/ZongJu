@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.UserDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,username,telephone,status,role,createDate,address,institutionName,discount</properties>
+			<fields>u.id,u.username,u.telephone,u.status,u.role,u.createDate,u.address,u.institutionName,u.discount</fields>
+			<hql>from User u</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>u.id = ?</hql>
+				</condition>
+				<condition id="username" describe="用户名">
+					<params type="param">
+						<param name="username" type="java.lang.String" />
+					</params>
+					<hql>u.username like ?</hql>
+				</condition>
+				<condition id="telephone" describe="联系方式">
+					<params type="param">
+						<param name="telephone" type="java.lang.String" />
+					</params>
+					<hql>u.telephone like ?</hql>
+				</condition>
+				<condition id="address" describe="地址">
+					<params type="param">
+						<param name="address" type="java.lang.String" />
+					</params>
+					<hql>u.address like ?</hql>
+				</condition>
+				<condition id="role" describe="角色">
+					<params type="param">
+						<param name="role" type="java.lang.Integer" />
+					</params>
+					<hql>u.role = ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>u.status = ?</hql>
+				</condition>
+				<condition id="createDate" describe="出版日期">
+					<params type="date">
+						<param name="createDate" type="java.util.Date" />
+					</params>
+					<hql>u.createDate like ?</hql>
+				</condition>
+				<condition id="isnotdel" describe="状态">
+					<params type="param">
+						<param name="isnotdel" type="java.lang.String" />
+					</params>
+					<hql>u.status <![CDATA[<]]><![CDATA[>]]> ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by u.createDate desc </order>
+			<className>cn.digitalpublishing.po.User</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from User u</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>u.id = ?</hql>
+				</condition>
+				<condition id="username" describe="用户名">
+					<params type="param">
+						<param name="username" type="java.lang.String" />
+					</params>
+					<hql>u.username like ?</hql>
+				</condition>
+				<condition id="telephone" describe="联系方式">
+					<params type="param">
+						<param name="telephone" type="java.lang.String" />
+					</params>
+					<hql>u.telephone like ?</hql>
+				</condition>
+				<condition id="address" describe="地址">
+					<params type="param">
+						<param name="address" type="java.lang.String" />
+					</params>
+					<hql>u.address like ?</hql>
+				</condition>
+				<condition id="role" describe="角色">
+					<params type="param">
+						<param name="role" type="java.lang.Integer" />
+					</params>
+					<hql>u.role = ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>u.status = ?</hql>
+				</condition>
+				<condition id="createDate" describe="出版日期">
+					<params type="date">
+						<param name="createDate" type="java.util.Date" />
+					</params>
+					<hql>u.createDate like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.User</className>
+		</query>
+		
+		<query>
+			<id>getUserList</id>
+			<method>getUserList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,username,password,status,role,discount,integral,balance,institutionName,productTypeId.id</properties>
+			<fields>u.id,u.username,u.password,u.status,u.role,u.discount,u.integral,u.balance,u.institutionName,u.productTypeId.id</fields>
+			<hql>from User u</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>u.id = ?</hql>
+				</condition>
+				<condition id="username" describe="用户名">
+					<params type="param">
+						<param name="username" type="java.lang.String" />
+					</params>
+					<hql>u.username = ?</hql>
+				</condition>
+				<condition id="password" describe="密码">
+					<params type="password">
+						<param name="password" type="java.lang.String" />
+					</params>
+					<hql>u.password = ?</hql>
+				</condition>
+				<condition id="role" describe="角色">
+					<params type="param">
+						<param name="role" type="java.lang.Integer" />
+					</params>
+					<hql>u.role = ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>u.status = ?</hql>
+				</condition>
+				<condition id="isnotdel" describe="状态">
+					<params type="param">
+						<param name="isnotdel" type="java.lang.String" />
+					</params>
+					<hql>u.status <![CDATA[<]]><![CDATA[>]]> ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.User</className>
+		</query>
+		
+	</dao>
+</web-query>

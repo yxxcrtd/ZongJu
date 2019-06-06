@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="detail" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cbaf16b7-84bb-410f-b224-6bfb50f73b0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="countPrice" class="java.lang.Double">
+		<fieldDescription><![CDATA[countPrice]]></fieldDescription>
+	</field>
+	<field name="price" class="java.lang.Double">
+		<fieldDescription><![CDATA[price]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[isbn]]></fieldDescription>
+	</field>
+	<field name="bookName" class="java.lang.String">
+		<fieldDescription><![CDATA[bookName]]></fieldDescription>
+	</field>
+	<field name="purchaseCode" class="java.lang.String">
+		<fieldDescription><![CDATA[purchaseCode]]></fieldDescription>
+	</field>
+	<field name="num" class="java.lang.Integer">
+		<fieldDescription><![CDATA[num]]></fieldDescription>
+	</field>
+	<field name="saleCode" class="java.lang.String">
+		<fieldDescription><![CDATA[saleCode]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="65" height="20" uuid="8e1e5a32-b245-4f2e-a598-a1a0f55b881a"/>
+				<textFieldExpression><![CDATA[$F{purchaseCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="0" width="55" height="20" uuid="eafea23f-5893-400a-86ad-78f91370e87f"/>
+				<textFieldExpression><![CDATA[$F{isbn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="0" width="41" height="20" uuid="6e7bce30-89ee-47bc-9f5a-813f134f6951"/>
+				<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="41" height="20" uuid="edbda262-7e81-407b-9448-ebc30e647560"/>
+				<textFieldExpression><![CDATA[$F{countPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="45" height="20" uuid="dfb4014c-10c3-4669-90de-2618e251e473"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="0" width="60" height="20" uuid="776ca0f0-6eac-442a-a4db-8e1afda43282"/>
+				<textFieldExpression><![CDATA[$F{saleCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="0" width="100" height="20" uuid="90a45e34-0d9b-4863-864c-224465b0b20c"/>
+				<textFieldExpression><![CDATA[$F{bookName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

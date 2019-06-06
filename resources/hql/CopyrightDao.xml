@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CopyrightDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, sourceId.id, belong, property, startDate, endDate, under</properties>
+			<fields>a.id, a.sourceId.id, a.belong, a.property, a.startDate, a.endDate, a.under</fields>
+			<hql>from Copyright a</hql>
+			<conditions>
+				<condition id="belong" describe="版权所有人">
+					<params type="param">
+						<param name="belong" type="java.lang.String" />
+					</params>
+					<hql>a.belong like ?</hql>
+				</condition>
+				<condition id="property" describe="版权所属地">
+					<params type="param">
+						<param name="property" type="java.lang.String" />
+					</params>
+					<hql>a.property like ?</hql>
+				</condition>
+				<condition id="startDate" describe="版权开始日期">
+						<params type="param">
+							<param name="startDate" type="java.util.Date" />
+						</params>
+						<hql>a.startDate = ?</hql>
+				</condition>
+				<condition id="endDate" describe="版权结束日期">
+						<params type="param">
+							<param name="endDate" type="java.util.Date" />
+						</params>
+						<hql>a.endDate = ?</hql>
+				</condition>
+				<condition id="under" describe="版权归属">
+						<params type="param">
+							<param name="under" type="java.lang.String" />
+						</params>
+						<hql>a.under like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Copyright</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Copyright a</hql>
+			<conditions>
+				<condition id="belong" describe="版权所有人">
+					<params type="param">
+						<param name="belong" type="java.lang.String" />
+					</params>
+					<hql>a.belong like ?</hql>
+				</condition>
+				<condition id="property" describe="版权所属地">
+					<params type="param">
+						<param name="property" type="java.lang.String" />
+					</params>
+					<hql>a.property like ?</hql>
+				</condition>
+				<condition id="startDate" describe="版权开始日期">
+						<params type="param">
+							<param name="startDate" type="java.util.Date" />
+						</params>
+						<hql>a.startDate = ?</hql>
+				</condition>
+				<condition id="endDate" describe="版权结束日期">
+						<params type="param">
+							<param name="endDate" type="java.util.Date" />
+						</params>
+						<hql>a.endDate = ?</hql>
+				</condition>
+				<condition id="under" describe="版权归属">
+						<params type="param">
+							<param name="under" type="java.lang.String" />
+						</params>
+						<hql>a.under like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Copyright</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, sourceId.id, belong, property, startDate, endDate, under</properties>
+			<fields>a.id, a.sourceId.id, a.belong, a.property, a.startDate, a.endDate, a.under</fields>
+			<hql>from Copyright a</hql>
+			<conditions>
+			    <condition id="sourceId" describe="资源Id">
+					<params type="param">
+						<param name="sourceId" type="java.lang.String" />
+					</params>
+					<hql>a.sourceId.id = ?</hql>
+				</condition>
+				<condition id="belong" describe="版权所有人">
+					<params type="param">
+						<param name="belong" type="java.lang.String" />
+					</params>
+					<hql>a.belong like ?</hql>
+				</condition>
+				<condition id="property" describe="版权所属地">
+					<params type="param">
+						<param name="property" type="java.lang.String" />
+					</params>
+					<hql>a.property like ?</hql>
+				</condition>
+				<condition id="startDate" describe="版权开始日期">
+						<params type="param">
+							<param name="startDate" type="java.util.Date" />
+						</params>
+						<hql>a.startDate = ?</hql>
+				</condition>
+				<condition id="endDate" describe="版权结束日期">
+						<params type="param">
+							<param name="endDate" type="java.util.Date" />
+						</params>
+						<hql>a.endDate = ?</hql>
+				</condition>
+				<condition id="under" describe="版权归属">
+						<params type="param">
+							<param name="under" type="java.lang.String" />
+						</params>
+						<hql>a.under like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Copyright</className>
+		</query>
+	</dao>
+</web-query>

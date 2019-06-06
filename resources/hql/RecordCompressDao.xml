@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.RecordCompressDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, name, originName, systemName, createTime</properties>
+			<fields>r.id, r.name, r.originName, r.systemName, r.createTime</fields>
+			<hql>from RecordCompress r</hql>
+			<conditions>
+				 <condition id="name" describe="包名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>r.name like ?</hql>
+				 </condition>
+				 <condition id="createTime" describe="生成时间">
+					<params type="param">
+						<param name="createTime" type="java.util.Date" />
+					</params>
+					<hql>r.createTime = ?</hql>
+				</condition> 
+			</conditions>
+			<group></group>
+			<order> order by r.createTime DESC </order>
+			<className>cn.digitalpublishing.po.RecordCompress</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from RecordCompress r</hql>
+			<conditions>
+				<condition id="name" describe="包名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>r.name like ?</hql>
+				 </condition>
+				<condition id="createTime" describe="生成时间">
+					<params type="param">
+						<param name="createTime" type="java.util.Date" />
+					</params>
+					<hql>r.createTime = ?</hql>
+				</condition> 
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.RecordCompress</className>
+		</query>
+	</dao>
+</web-query>

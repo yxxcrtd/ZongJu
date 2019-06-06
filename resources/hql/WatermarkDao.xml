@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.WatermarkDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,content,font,active</properties>
+			<fields>a.id,a.content,a.font,a.active</fields>
+			<hql>from Watermark a</hql>
+			<conditions>
+				<condition id="content" describe="内容">
+					<params type="param">
+						<param name="content" type="java.lang.String" />
+					</params>
+					<hql>a.content like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Watermark</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Watermark a</hql>
+			<conditions>
+				<condition id="content" describe="内容">
+					<params type="param">
+						<param name="content" type="java.lang.String" />
+					</params>
+					<hql>a.content like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Watermark</className>
+		</query>
+		
+		
+		<query>
+			<id>getByContent</id>
+			<method>getByContent</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,content,font,active</properties>
+			<fields>a.id,a.content,a.font,a.active</fields>
+			<hql>from Watermark a</hql>
+			<conditions>
+				<condition id="content" describe="内容">
+					<params type="param">
+						<param name="content" type="java.lang.String" />
+					</params>
+					<hql>a.content = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Watermark</className>
+		</query>
+		
+		
+		<query>
+			<id>getByActive</id>
+			<method>getByActive</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,content,font,active</properties>
+			<fields>a.id,a.content,a.font,a.active</fields>
+			<hql>from Watermark a</hql>
+			<conditions>
+				<condition id="active" describe="激活">
+					<params type="param">
+						<param name="active" type="java.lang.Integer" />
+					</params>
+					<hql>a.active = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Watermark</className>
+		</query>
+		
+		<query>
+			<id>getActive</id>
+			<method>getActive</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,content,font,active</properties>
+			<fields>a.id,a.content,a.font,a.active</fields>
+			<hql>from Watermark a</hql>
+			<conditions>
+				<condition id="active" describe="激活">
+					<params type="param">
+						<param name="active" type="java.lang.Integer" />
+					</params>
+					<hql>a.active = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Watermark</className>
+		</query>
+		
+		
+	
+	</dao>
+</web-query>

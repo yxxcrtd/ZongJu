@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProduct" table="P_PRODUCT">
+		<id name="id" type="java.lang.String">
+			<column name="P_PRODUCT_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="P_PRODUCT_CODE" length="32">
+				<comment>产品编号</comment>
+			</column>
+		</property>
+		<property name="identityId" type="java.lang.String">
+        	<column name="P_PRODUCT_IDENTITYID" length="128">
+        		<comment>唯一标识</comment>
+        	</column>
+        </property>
+        <property name="metaId" type="java.lang.String">
+        	<column name="P_PRODUCT_METATD" length="128">
+        		<comment>二维码生成路径</comment>
+        	</column>
+        </property>
+        <property name="twoDimension" type="java.lang.String">
+        	<column name="P_PRODUCT_TWODIMENSION" length="128">
+        		<comment>二维码路径</comment>
+        	</column>
+        </property>
+		<property name="isbn" type="java.lang.String">
+			<column name="P_PRODUCT_ISBN" length="32">
+				<comment>产品ISBN</comment>
+			</column>
+		</property>
+		<property name="codeType" type="java.lang.String">
+			<column name="P_PRODUCT_CODE_TYPE" length="32">
+				<comment>产品编号类型</comment>
+			</column>
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="P_PRODUCT_TITLE" length="256">
+				<comment>产品题名</comment>
+			</column>
+		</property>
+		<property name="translation" type="java.lang.String">
+			<column name="P_PRODUCT_TRANSLATION" length="256">
+				<comment>产品译名</comment>
+			</column>
+		</property>
+		<property name="subTitle" type="java.lang.String">
+			<column name="P_PRODUCT_SUB_TITLE" length="256">
+				<comment>产品副题名</comment>
+			</column>
+		</property>
+		<property name="pubYear" type="java.lang.String">
+			<column name="P_PRODUCT_PUB_YEAR" length="32">
+				<comment>产品出版年</comment>
+			</column>
+		</property>
+		<property name="pageNum" type="java.lang.Integer">
+			<column name="P_PRODUCT_PAGE_NUM">
+				<comment>产品页数</comment>
+			</column>
+		</property>
+		<property name="edition" type="java.lang.String">
+			<column name="P_PRODUCT_EDITION" length="32">
+				<comment>产品版别</comment>
+			</column>
+		</property>
+		<property name="binding" type="java.lang.String">
+			<column name="P_PRODUCT_BINDING" length="32">
+				<comment>产品装帧</comment>
+			</column>
+		</property>
+		<property name="marcFlag" type="java.lang.String">
+			<column name="P_PRODUCT_MARC_FLAG" length="32">
+				<comment>产品是否匹配MARC</comment>
+			</column>
+		</property>
+		<property name="keyword" type="java.lang.String">
+			<column name="P_PRODUCT_KEYWORD" length="512">
+				<comment>产品关键字</comment>
+			</column>
+		</property>
+		
+		<property name="author" type="java.lang.String">
+			<column name="P_PRODUCT_AUTHOR" length="32">
+				<comment>产品作者</comment>
+			</column>
+		</property>
+		
+		<property name="publisher" type="java.lang.String">
+			<column name="P_PRODUCT_PUBLISHER" length="64">
+				<comment>产品出版社</comment>
+			</column>
+		</property>
+		
+		<property name="datePublication" type="java.util.Date">
+			<column name="P_PRODUCT_DATEPUBLICATION" length="32">
+				<comment>产品出版日期</comment>
+			</column>
+		</property>
+		
+		<property name="bookCovers" type="java.lang.String">
+            <column name="P_PRODUCT_BOOKCOVERS" length="128">
+            	<comment>图书封面</comment>
+            </column>
+        </property>
+        
+        <property name="bookPDFOriginName" type="java.lang.String">
+            <column name="P_PRODUCT_BOOKPDFORIGINNAME" length="128">
+            	<comment>pdf原名</comment>
+            </column>
+        </property>	
+        
+        <property name="bookPDFSystemName" type="java.lang.String">
+            <column name="P_PRODUCT_BOOKPDFSYSTEMNAME" length="64">
+            	<comment>pdf系统名</comment>
+            </column>
+        </property>	
+        
+        <property name="bookXMLName" type="java.lang.String">
+            <column name="P_PRODUCT_BOOKXMLNAME" length="64">
+            	<comment>xml文件名</comment>
+            </column>
+        </property>
+		
+		<property name="proportion" type="java.lang.String">
+        	<column name="P_PRODUCT_PROPORTION" length="16">
+        		<comment>分成比例</comment>
+        	</column>
+        </property>
+		
+		<property name="status" type="java.lang.String">
+			<column name="P_PRODUCT_STATUS" length="32">
+				<comment>产品状态</comment>
+			</column>
+		</property>
+        <property name="flowStatus" type="java.lang.String">
+            <column name="P_PRODUCT_FLOW_STATUS" length="32">
+                <comment>产品状态</comment>
+            </column>
+        </property>
+		<property name="price" type="java.math.BigDecimal">
+			<column name="P_PRODUCT_PRICE" precision="10" scale="2">
+				<comment>产品目录价格</comment>
+			</column>
+		</property>
+		<property name="language" type="java.lang.String">
+			<column name="P_PRODUCT_LANGUAGE" length="32">
+				<comment>产品语种</comment>
+			</column>
+		</property>
+        <property name="pubBy" type="java.lang.String">
+            <column name="P_PRODUCT_PUB_BY" length="32">
+                <comment>产品所属分社</comment>
+            </column>
+        </property>
+        <property name="pubName" type="java.lang.String">
+            <column name="P_PRODUCT_PUB_NAME" length="128">
+                <comment>产品所属分社名称</comment>
+            </column>
+        </property>
+        <property name="editorBy" type="java.lang.String">
+            <column name="P_PRODUCT_EDITOR_BY" length="32">
+                <comment>产品所属责编</comment>
+            </column>
+        </property>
+        <property name="editorName" type="java.lang.String">
+            <column name="P_PRODUCT_EDITOR_NAME" length="32">
+                <comment>产品所属责编名称</comment>
+            </column>
+        </property>
+		<property name="remark" type="java.lang.String">
+			<column name="P_PRODUCT_REMARK" length="1024">
+				<comment>产品备注</comment>
+			</column>
+		</property>
+        <property name="createOn" type="java.util.Date">
+            <column name="P_PRODUCT_CREATE_ON">
+                <comment>产品创建日期</comment>
+            </column>
+        </property>
+        <property name="updateOn" type="java.util.Date">
+            <column name="P_PRODUCT_UPDATE_ON">
+                <comment>产品修改日期</comment>
+            </column>
+        </property>
+        
+        <property name="content" type="text">
+        	<column name="P_PRODUCT_CONTENT" length="16777216">
+        		<comment>图书节内容</comment>
+        	</column>
+        </property>
+        
+        <property name="objId" type="java.lang.String">
+        	<column name="P_PRODUCT_OBJID" length="32">
+        		<comment>对象名主键id</comment>
+        	</column>
+        </property>
+        
+        <property name="objName" type="java.lang.String">
+        	<column name="P_PRODUCT_OBJNAME" length="16">
+        		<comment>对象名</comment>
+        	</column>
+        </property>
+        
+		<many-to-one name="parentProduct" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_PARENT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+        <many-to-one name="productType" class="cn.digitalpublishing.po.PProductType" fetch="select" lazy="false">
+            <column name="P_PRODUCT_TYPE_ID" length="32">
+                <comment>产品类型ID</comment>
+            </column>
+        </many-to-one>
+        
+        <many-to-one name="productLicense" class="cn.digitalpublishing.po.PProductLicense" fetch="select" lazy="false">
+            <column name="P_LICENSE_ID" length="32">
+                <comment>产品许可ID</comment>
+            </column>
+        </many-to-one>
+
+		<set name="productSet" inverse="true">
+			<key>
+				<column name="P_PRODUCT_PARENT_ID" length="32">
+					<comment>产品ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProduct" />
+		</set>
+		
+		<set name="productStructureRelationshipSet" inverse="true">
+            <key>
+                <column name="P_PRODUCT_ID" length="32">
+                    <comment>产品ID</comment>
+                </column>
+            </key>
+            <one-to-many class="cn.digitalpublishing.po.PProductStructureRelationship" />
+        </set>
+        
+        <many-to-one name="user" class="cn.digitalpublishing.po.User">
+        	<column name="userid"></column>
+        </many-to-one>
+
+	</class>
+</hibernate-mapping>

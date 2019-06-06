@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="daoFacade" class="cn.digitalpublishing.facade.DaoFacade">
+	
+		<!-- 基础 -->
+		<property name="dicDao">
+			<bean class="cn.digitalpublishing.dao.BDicDao" parent="commonDao" />
+		</property>
+		<!-- 数据词典 -->
+		<property name="dicClassDao">
+			<bean class="cn.digitalpublishing.dao.BDicClassDao" parent="commonDao" />
+		</property>
+		<!--产品信息 -->
+		<property name="productDao">
+			<bean class="cn.digitalpublishing.dao.PProductDao" parent="commonDao"></bean>
+		</property>
+        <!-- 产品分类 -->
+		<property name="productTypeDao">
+			<bean class="cn.digitalpublishing.dao.PProductTypeDao" parent="commonDao"></bean>
+		</property>
+        <!-- 碎片化 -->
+		<property name="structureDao">
+			<bean class="cn.digitalpublishing.dao.PStructureDao" parent="commonDao"></bean>
+		</property>
+		<!-- 碎片化结构 -->
+		<property name="productStructureRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.PProductStructureRelationshipDao" parent="commonDao"></bean>
+		</property>
+        <!-- 产品许可 -->
+        <property name="productLicenseDao">
+            <bean class="cn.digitalpublishing.dao.PProductLicenseDao" parent="commonDao"></bean>
+        </property>
+        <!-- 版权信息 -->
+		<property name="copyrightDao">
+			<bean class="cn.digitalpublishing.dao.CopyrightDao" parent="commonDao" />
+		</property>
+		<!-- 合同 -->
+		<property name="crcontractDao">
+			<bean class="cn.digitalpublishing.dao.CrContractDao" parent="commonDao" />
+		</property>
+		<!-- 国别权利合同关系 -->
+		<property name="crcRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrCrcRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 国别附属权利关系 -->
+		<property name="csrRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrCsrRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 授权类型 -->
+		<property name="crLicenseTypeDao">
+			<bean class="cn.digitalpublishing.dao.CrLicenseTypeDao" parent="commonDao" />
+		</property>
+		<!-- 语种权利合同关系 -->
+		<property name="lrcRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrLrcRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 语种附属权利关系 -->
+		<property name="lsrRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrLsrRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 权利授权 -->
+		<property name="CrRightDao">
+			<bean class="cn.digitalpublishing.dao.CrRightDao" parent="commonDao" />
+		</property>
+		<!-- 计算公式 -->
+		<property name="crFormulaDao">
+			<bean class="cn.digitalpublishing.dao.CrRlFormulaDao" parent="commonDao" />
+		</property>
+		<!-- 权利授权者 -->
+		<property name="crOwnerDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerDao" parent="commonDao" />
+		</property>
+		<!-- 预付款及固定费用 -->
+		<property name="crOwnerFeeDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerFeeDao" parent="commonDao" />
+		</property>
+		<!-- 付款对象 -->
+		<property name="crOwnerPayeeDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerPayeeDao" parent="commonDao" />
+		</property>
+		<!-- 人员版税计算规则 -->
+		<property name="crOwnerRoyaltyDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerRoyaltyDao" parent="commonDao" />
+		</property>
+		<!-- 权利授权产品 -->
+		<property name="crProductDao">
+			<bean class="cn.digitalpublishing.dao.CrRlProductDao" parent="commonDao" />
+		</property>
+		<!-- 版税规则库 -->
+		<property name="crRoyaltyRuleDao">
+			<bean class="cn.digitalpublishing.dao.CrRlRoyaltyRuleDao" parent="commonDao" />
+		</property>
+		<!-- 版税附属权利 -->
+		<property name="subsidaryRightDao">
+			<bean class="cn.digitalpublishing.dao.CrSubsidaryRightDao" parent="commonDao" />
+		</property>
+		<!-- 用户 -->
+		<property name="userDao">
+			<bean class="cn.digitalpublishing.dao.UserDao" parent="commonDao" />
+		</property>
+		<!-- 文章发布 -->
+		<property name="articleDao">
+			<bean class="cn.digitalpublishing.dao.ArticleDao" parent="commonDao" />
+		</property>
+		<!-- 版权交易 -->
+		<property name="publishTradeDao">
+			<bean class="cn.digitalpublishing.dao.PublishTradeDao" parent="commonDao" />
+		</property>
+        <!-- 购物车 -->
+        <property name="shoppingCartDao">
+            <bean class="cn.digitalpublishing.dao.ShoppingCartDao" parent="commonDao"></bean>
+        </property>
+        <!-- 订单 -->
+        <property name="orderDao">
+            <bean class="cn.digitalpublishing.dao.OrderDao" parent="commonDao"></bean>
+        </property>
+        <!-- 素材打包 -->
+        <property name="compressDao">
+            <bean class="cn.digitalpublishing.dao.CompressDao" parent="commonDao"></bean>
+        </property>
+        <!-- 打包记录 -->
+        <property name="recordCompressDao">
+            <bean class="cn.digitalpublishing.dao.RecordCompressDao" parent="commonDao"></bean>
+        </property>
+         <!-- 水印 -->
+        <property name="watermarkDao">
+            <bean class="cn.digitalpublishing.dao.WatermarkDao" parent="commonDao"></bean>
+        </property>
+        <!-- 积分记录 -->
+        <property name="integralDao">
+            <bean class="cn.digitalpublishing.dao.IntegralDao" parent="commonDao"></bean>
+        </property>
+        <!-- 图书章 -->
+        <property name="chapterDao">
+            <bean class="cn.digitalpublishing.dao.ChapterDao" parent="commonDao"></bean>
+        </property>
+        <!-- 图书节-->
+        <property name="sectionDao">
+            <bean class="cn.digitalpublishing.dao.SectionDao" parent="commonDao"></bean>
+        </property>
+        <!-- 充值记录 -->
+        <property name="rechargeDao">
+            <bean class="cn.digitalpublishing.dao.RechargeDao" parent="commonDao"></bean>
+        </property>
+        
+	</bean>
+</beans>

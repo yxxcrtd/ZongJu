@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlOwnerDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rlownerId, lastedDate, owerCopy, agentCopy, owerDiscount, paymentTrem, ownerPercent, retainPeriod, retainUntil, retainPercent, minRetain</properties>
+			<fields>a.rlownerId, a.lastedDate, a.owerCopy, a.agentCopy, a.owerDiscount, a.paymentTrem, a.ownerPercent, a.retainPeriod, a.retainUntil, a.retainPercent, a.minRetain</fields>
+			<hql>from CrRlOwner a</hql>
+			<conditions>
+				<condition id="rlownerId" discribe="授权者ID">
+					<params type="param">
+						<param name="rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlownerId = ?</hql>
+				</condition>
+			
+				<condition id="owerCopy" discribe="作者副本数">
+					<params type="param">
+						<param name="owerCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.owerCopy = ?</hql>
+				</condition>
+				
+				<condition id="agentCopy" discribe="代理商副本数">
+					<params type="param">
+						<param name="agentCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.agentCopy = ?</hql>
+				</condition>
+				
+				<condition id="owerDiscount" discribe="作者购买折扣">
+					<params type="param">
+						<param name="owerDiscount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.owerDiscount = ?</hql>
+				</condition>
+				
+				<condition id="paymentTrem" discribe="付款条款">
+					<params type="param">
+						<param name="paymentTrem" type="java.lang.Integer" />
+					</params>
+					<hql>a.paymentTrem = ?</hql>
+				</condition>
+				
+				<condition id="ownerPercent" discribe="所占百分比">
+					<params type="param">
+						<param name="ownerPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.ownerPercent = ?</hql>
+				</condition>
+				
+				<condition id="retainPeriod" discribe="预留期次">
+					<params type="param">
+						<param name="retainPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainPeriod = ?</hql>
+				</condition>
+				
+				<condition id="retainUntil" discribe="预留到期次">
+					<params type="param">
+						<param name="retainUntil" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainUntil = ?</hql>
+				</condition>
+				
+				<condition id="retainPercent" discribe="每次预留百分比">
+					<params type="param">
+						<param name="retainPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.retainPercent = ?</hql>
+				</condition>
+				
+				<condition id="minRetain" discribe="每次最小预留">
+					<params type="param">
+						<param name="minRetain" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minRetain = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwner</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>rlownerId, lastedDate, owerCopy, agentCopy, owerDiscount, paymentTrem, ownerPercent, retainPeriod, retainUntil, retainPercent, minRetain, personTrcr.person.name, personTrcr.personType.name</properties>
+			<fields>a.rlownerId, a.lastedDate, a.owerCopy, a.agentCopy, a.owerDiscount, a.paymentTrem, a.ownerPercent, a.retainPeriod, a.retainUntil, a.retainPercent, a.minRetain, a.personTrcr.person.name, a.personTrcr.personType.name</fields>
+			<hql>from CrRlOwner a</hql>
+			<conditions>
+				<condition id="rlownerId" discribe="授权者ID">
+					<params type="param">
+						<param name="rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlownerId = ?</hql>
+				</condition>
+			
+				<condition id="owerCopy" discribe="作者副本数">
+					<params type="param">
+						<param name="owerCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.owerCopy = ?</hql>
+				</condition>
+				
+				<condition id="agentCopy" discribe="代理商副本数">
+					<params type="param">
+						<param name="agentCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.agentCopy = ?</hql>
+				</condition>
+				
+				<condition id="owerDiscount" discribe="作者购买折扣">
+					<params type="param">
+						<param name="owerDiscount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.owerDiscount = ?</hql>
+				</condition>
+				
+				<condition id="paymentTrem" discribe="付款条款">
+					<params type="param">
+						<param name="paymentTrem" type="java.lang.Integer" />
+					</params>
+					<hql>a.paymentTrem = ?</hql>
+				</condition>
+				
+				<condition id="ownerPercent" discribe="所占百分比">
+					<params type="param">
+						<param name="ownerPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.ownerPercent = ?</hql>
+				</condition>
+				
+				<condition id="retainPeriod" discribe="预留期次">
+					<params type="param">
+						<param name="retainPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainPeriod = ?</hql>
+				</condition>
+				
+				<condition id="retainUntil" discribe="预留到期次">
+					<params type="param">
+						<param name="retainUntil" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainUntil = ?</hql>
+				</condition>
+				
+				<condition id="retainPercent" discribe="每次预留百分比">
+					<params type="param">
+						<param name="retainPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.retainPercent = ?</hql>
+				</condition>
+				
+				<condition id="minRetain" discribe="每次最小预留">
+					<params type="param">
+						<param name="minRetain" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minRetain = ?</hql>
+				</condition>
+				
+				<condition id="rlProduct_right_rlicenseId" discribe="权利授权ID">
+					<params type="param">
+						<param name="rlProduct_right_rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.rlProduct.right.rlicenseId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwner</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rlownerId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlOwner a</hql>
+			<conditions>
+				<condition id="rlownerId" discribe="授权者ID">
+					<params type="param">
+						<param name="rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlownerId = ?</hql>
+				</condition>
+			
+				<condition id="owerCopy" discribe="作者副本数">
+					<params type="param">
+						<param name="owerCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.owerCopy = ?</hql>
+				</condition>
+				
+				<condition id="agentCopy" discribe="代理商副本数">
+					<params type="param">
+						<param name="agentCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.agentCopy = ?</hql>
+				</condition>
+				
+				<condition id="owerDiscount" discribe="作者购买折扣">
+					<params type="param">
+						<param name="owerDiscount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.owerDiscount = ?</hql>
+				</condition>
+				
+				<condition id="paymentTrem" discribe="付款条款">
+					<params type="param">
+						<param name="paymentTrem" type="java.lang.Integer" />
+					</params>
+					<hql>a.paymentTrem = ?</hql>
+				</condition>
+				
+				<condition id="ownerPercent" discribe="所占百分比">
+					<params type="param">
+						<param name="ownerPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.ownerPercent = ?</hql>
+				</condition>
+				
+				<condition id="retainPeriod" discribe="预留期次">
+					<params type="param">
+						<param name="retainPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainPeriod = ?</hql>
+				</condition>
+				
+				<condition id="retainUntil" discribe="预留到期次">
+					<params type="param">
+						<param name="retainUntil" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainUntil = ?</hql>
+				</condition>
+				
+				<condition id="retainPercent" discribe="每次预留百分比">
+					<params type="param">
+						<param name="retainPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.retainPercent = ?</hql>
+				</condition>
+				
+				<condition id="minRetain" discribe="每次最小预留">
+					<params type="param">
+						<param name="minRetain" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minRetain = ?</hql>
+				</condition>
+				
+				<condition id="rlProduct_right_rlicenseId" discribe="权利授权ID">
+					<params type="param">
+						<param name="rlProduct_right_rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.rlProduct.right.rlicenseId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwner</className>
+		</query>
+	</dao>
+</web-query>

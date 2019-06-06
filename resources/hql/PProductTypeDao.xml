@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductTypeDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,internationCode</properties>
+			<fields>a.id,a.code,a.name,a.internationCode</fields>
+			<hql>from PProductType a</hql>
+			<conditions>
+				<condition id="id" discribe="产品类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="产品类型名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="code" describe="产品类型编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>a.id</fields>
+			<hql>from PProductType a left join a.parentProductType c </hql>
+			<conditions>
+				<condition id="code" describe="产品类型编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code =  ?</hql>
+				</condition>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then 'root' else c.id end) = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from PProductType a left join a.parentProductType c </hql>
+			<conditions>
+				<condition id="id" discribe="产品类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then 'root' else c.id end) = ?</hql>
+				</condition>
+				<condition id="name" describe="产品类型名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="code" describe="产品类型编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		
+		<query>
+			<id>getTreeList</id>
+			<method>getTreeList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,order,treeCode,internationCode,parentId</properties>
+			<fields>a.id,a.code,a.name,a.order,a.treeCode,a.internationCode,a.parentId</fields>
+			<hql>from PProductType a left join a.parentProductType c </hql>
+			<conditions>
+				<condition id="id" discribe="产品类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then 'root' else c.id end) = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		
+		<!-- 获取一级分类（条件是：a.parentId is null） -->
+		<query>
+			<id>getProductTypeList</id>
+			<method>getProductTypeList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,order,treeCode,internationCode,parentId</properties>
+			<fields>a.id,a.code,a.name,a.order,a.treeCode,a.internationCode,a.parentId</fields>
+			<hql>from PProductType a</hql>
+			<conditions>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then 'root' else c.id end) = ?</hql>
+				</condition>
+				<condition>
+					<hql>a.parentId is null</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		
+		<!-- 获取父分类的子分类 -->
+		<query>
+			<id>getProductTypeListById</id>
+			<method>getProductTypeListById</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,order,treeCode,internationCode,parentId</properties>
+			<fields>a.id,a.code,a.name,a.order,a.treeCode,a.internationCode,a.parentId</fields>
+			<hql>from PProductType a</hql>
+			<conditions>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>a.parentId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		
+		<query>
+			<id>getNextOrder</id>
+			<method>getNextOrder</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>order</properties>
+			<fields>a.order</fields>
+			<hql>from PProductType a left join a.parentProductType c </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then 'root' else c.id end) = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+		<query>
+			<id>getNextCode</id>
+			<method>getNextCode</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>treeCode</properties>
+			<fields>a.treeCode</fields>
+			<hql>from PProductType a left join a.parentProductType c </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then 'root' else c.id end) = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductType</className>
+		</query>
+	</dao>
+</web-query>

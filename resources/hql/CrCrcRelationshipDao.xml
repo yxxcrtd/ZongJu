@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrCrcRelationshipDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, </properties>
+			<fields>a.id, </fields>
+			<hql>from CrCrcRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="国别权利合同关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+			
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrCrcRelationship</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, country.enName, country.cnName</properties>
+			<fields>a.id, a.country.enName, a.country.cnName</fields>
+			<hql>from CrCrcRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="国别权利合同关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="right_id" discribe="权利授权ID">
+					<params type="param">
+						<param name="right_id" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+				
+				<condition id="country_enName" discribe="国家英文名称">
+					<params type="param">
+						<param name="country_enName" type="java.lang.String" />
+					</params>
+					<hql>a.country.enName like ?</hql>
+				</condition>
+				
+				<condition id="country_cnName" discribe="国家中文名称">
+					<params type="param">
+						<param name="country_cnName" type="java.lang.String" />
+					</params>
+					<hql>a.country.cnName like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrCrcRelationship</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrCrcRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="国别权利合同关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="right_id" discribe="权利授权ID">
+					<params type="param">
+						<param name="right_id" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+				
+				<condition id="country_enName" discribe="国家英文名称">
+					<params type="param">
+						<param name="country_enName" type="java.lang.String" />
+					</params>
+					<hql>a.country.enName like ?</hql>
+				</condition>
+				
+				<condition id="country_cnName" discribe="国家中文名称">
+					<params type="param">
+						<param name="country_cnName" type="java.lang.String" />
+					</params>
+					<hql>a.country.cnName like ?</hql>
+				</condition>
+			
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrCrcRelationship</className>
+		</query>
+	</dao>
+</web-query>

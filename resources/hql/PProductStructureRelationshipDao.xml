@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductStructureRelationshipDao">
+		<query>
+			<id>getTreeChildNodes</id>
+			<method>getTreeChildNodes</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, name, childSize</properties>
+			<fields>a.id, a.name, (select count(*) from PProductStructureRelationship e where e.parentProductStructureRelationship.id = a.id and a.status = e.status and e.structure.id is null)</fields>
+			<hql>from PProductStructureRelationship a</hql>
+			<conditions>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				
+				<condition id="product_id" discribe="产品ID">
+					<params type="param">
+						<param name="product_id" type="java.lang.String" />
+					</params>
+					<hql>a.product.id = ?</hql>
+				</condition>
+								
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when a.parentProductStructureRelationship.id is null then 'root' else a.parentProductStructureRelationship.id end) = ?</hql>
+				</condition>
+				<condition>
+					<hql>a.structure.id is null</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductStructureRelationship</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, status</properties>
+			<fields>a.id, a.status</fields>
+			<hql>from PProductStructureRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="产品和结构关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="产品和结构关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductStructureRelationship</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, structure.path, structure.keyword</properties>
+			<fields>a.id, a.structure.path, a.structure.keyword</fields>
+			<hql>from PProductStructureRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="产品和结构关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="产品和结构关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				
+				<condition id="parentId" discribe="父产品结构ID">
+					<params type="param">
+						<param name="parentId" type="java.lang.String" />
+					</params>
+					<hql>a.parentProductStructureRelationship.id = ?</hql>
+				</condition>
+				
+				<condition>
+					<hql>a.structure.id is not null</hql>
+				</condition>
+				
+				<condition id="structure_keyword" discribe="素材关键字">
+					<params type="param">
+						<param name="structure_keyword" type="java.lang.String" />
+					</params>
+					<hql>a.structure.keyword like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductStructureRelationship</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductStructureRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="产品和结构关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="产品和结构关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				
+				<condition id="parentId" discribe="父产品结构ID">
+					<params type="param">
+						<param name="parentId" type="java.lang.String" />
+					</params>
+					<hql>a.parentProductStructureRelationship.id = ?</hql>
+				</condition>
+				
+				<condition>
+					<hql>a.structure.id is not null</hql>
+				</condition>
+				
+				<condition id="structure_keyword" discribe="素材关键字">
+					<params type="param">
+						<param name="structure_keyword" type="java.lang.String" />
+					</params>
+					<hql>a.structure.keyword like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductStructureRelationship</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IntegralDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,user.id,source,integral,createDate</properties>
+			<fields>i.id,i.user.id,i.source,i.integral,i.createDate</fields>
+			<hql>from Integral i</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>i.id = ?</hql>
+				</condition>
+				<condition id="userId" describe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>i.user.id = ?</hql>
+				</condition>
+				<condition id="source" describe="来源">
+					<params type="param">
+						<param name="source" type="java.lang.String" />
+					</params>
+					<hql>i.source like ?</hql>
+				</condition>
+				<condition id="createDate" describe="积分获得时间">
+					<params type="date">
+						<param name="createDate" type="java.util.Date" />
+					</params>
+					<hql>i.createDate = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by i.createDate desc </order>
+			<className>cn.digitalpublishing.po.Integral</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from Integral i</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>i.id = ?</hql>
+				</condition>
+				<condition id="userId" describe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>i.user.id = ?</hql>
+				</condition>
+				<condition id="source" describe="来源">
+					<params type="param">
+						<param name="source" type="java.lang.String" />
+					</params>
+					<hql>i.source like ?</hql>
+				</condition>
+				<condition id="createDate" describe="积分获得时间">
+					<params type="date">
+						<param name="createDate" type="java.util.Date" />
+					</params>
+					<hql>i.createDate = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Integral</className>
+		</query>
+		
+	</dao>
+</web-query>

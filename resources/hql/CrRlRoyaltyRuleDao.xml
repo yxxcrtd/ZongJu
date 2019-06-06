@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlRoyaltyRuleDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>royaltyRuleId, royaltyRuleName, royaltyRuleCode, royaltyDiscount, royaltyType, market, priceType, taxDescription</properties>
+			<fields>a.royaltyRuleId, a.royaltyRuleName, a.royaltyRuleCode, a.royaltyDiscount, (select name from BDic z where z.id = a.royaltyType), (select name from BDic z where z.id = a.market), (select name from BDic z where z.id = a.priceType), (select name from BDic z where z.id = a.taxDescription)</fields>
+			<hql>from CrRlRoyaltyRule a</hql>
+			<conditions>
+				<condition id="royaltyType" discribe="版税类型">
+					<params type="param">
+						<param name="royaltyType" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyType = ?</hql>
+				</condition>
+				
+				<condition id="market" discribe="市场">
+					<params type="param">
+						<param name="market" type="java.lang.String" />
+					</params>
+					<hql>a.market = ?</hql>
+				</condition>
+				
+				<condition id="priceType" discribe="价格类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlRoyaltyRule</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>royaltyRuleId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlRoyaltyRule a</hql>
+			<conditions>
+				<condition id="royaltyType" discribe="版税类型">
+					<params type="param">
+						<param name="royaltyType" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyType = ?</hql>
+				</condition>
+				
+				<condition id="market" discribe="市场">
+					<params type="param">
+						<param name="market" type="java.lang.String" />
+					</params>
+					<hql>a.market = ?</hql>
+				</condition>
+				
+				<condition id="priceType" discribe="价格类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlRoyaltyRule</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>royaltyRuleId, royaltyRuleName, royaltyRuleCode</properties>
+			<fields>a.royaltyRuleId, a.royaltyRuleName, a.royaltyRuleCode</fields>
+			<hql>from CrRlRoyaltyRule a</hql>
+			<conditions>
+				<condition id="royaltyType" discribe="版税类型">
+					<params type="param">
+						<param name="royaltyType" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyType = ?</hql>
+				</condition>
+				
+				<condition id="market" discribe="市场">
+					<params type="param">
+						<param name="market" type="java.lang.String" />
+					</params>
+					<hql>a.market = ?</hql>
+				</condition>
+				
+				<condition id="priceType" discribe="价格类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlRoyaltyRule</className>
+		</query>
+	</dao>
+</web-query>

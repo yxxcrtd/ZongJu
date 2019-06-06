@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.ShoppingCart" table="T_SHOPPINGCART">
+		<id name="id" type="java.lang.String">
+			<column name="ShoppingCartId" length="32">
+				<comment>id</comment>
+			</column>
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="userId" type="java.lang.String">
+			<column name="ShoppingCartUserId" length="32">
+				<comment>用户Id</comment>
+			</column>
+		</property>
+
+		<property name="count" type="java.lang.Integer">
+			<column name="ShoppingCartCount" length="4">
+				<comment>购物数量</comment>
+			</column>
+		</property>
+
+		<property name="money" type="java.math.BigDecimal">
+			<column name="ShoppingCartMoney" length="9">
+				<comment>购物总金额</comment>
+			</column>
+		</property>
+
+		<property name="status" type="java.lang.Integer">
+			<column name="ShoppingCartStatus" length="4">
+				<comment>购物车状态（0：未支付；1：支付失败；2：支付成功）</comment>
+			</column>
+		</property>
+        
+        <property name="createDate" type="java.util.Date">
+        	<column name="CreateDate" length="32">
+        		<comment>下单时间</comment>
+        	</column>
+        </property>
+       <many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+            <column name="ShoppingCartResourceId" length="32">
+                <comment>产品ID</comment>
+            </column>
+        </many-to-one>
+	</class>
+</hibernate-mapping>

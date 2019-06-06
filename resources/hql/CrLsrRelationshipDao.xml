@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrLsrRelationshipDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, </properties>
+			<fields>a.id, </fields>
+			<hql>from CrLsrRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="语种附属权利关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+			
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLsrRelationship</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, language.code, language.name</properties>
+			<fields>a.id, a.language.code, a.language.name</fields>
+			<hql>from CrLsrRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="语种附属权利关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="subsidaryRight_srlicenseId" discribe="版税附属权利ID">
+					<params type="param">
+						<param name="subsidaryRight_srlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.subsidaryRight.srlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="language_code" discribe="语种编码">
+					<params type="param">
+						<param name="language_code" type="java.lang.String" />
+					</params>
+					<hql>a.language.code like ?</hql>
+				</condition>
+				
+				<condition id="language_name" discribe="语种名称">
+					<params type="param">
+						<param name="language_name" type="java.lang.String" />
+					</params>
+					<hql>a.language.name like ?</hql>
+				</condition>
+			
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLsrRelationship</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrLsrRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="语种附属权利关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="subsidaryRight_srlicenseId" discribe="版税附属权利ID">
+					<params type="param">
+						<param name="subsidaryRight_srlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.subsidaryRight.srlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="language_code" discribe="语种编码">
+					<params type="param">
+						<param name="language_code" type="java.lang.String" />
+					</params>
+					<hql>a.language.code like ?</hql>
+				</condition>
+				
+				<condition id="language_name" discribe="语种名称">
+					<params type="param">
+						<param name="language_name" type="java.lang.String" />
+					</params>
+					<hql>a.language.name like ?</hql>
+				</condition>
+			
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLsrRelationship</className>
+		</query>
+	</dao>
+</web-query>

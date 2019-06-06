@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PStructure" table="P_STRUCTURE" dynamic-insert="true" dynamic-update="true">
+		<id name="id" type="java.lang.String">
+			<column name="P_STRUCTURE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="P_STRUCTURE_CODE" length="32">
+				<comment>结构编号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="P_STRUCTURE_NAME" length="256">
+				<comment>结构名称</comment>
+			</column>
+		</property>
+        <property name="status" type="java.lang.String">
+            <column name="P_STRUCTURE_STATUS" length="32">
+                <comment>结构状态</comment>
+            </column>
+        </property>
+        <property name="keyword" type="java.lang.String">
+            <column name="P_STRUCTURE_KEYWORD" length="1024">
+                <comment>结构关键字</comment>
+            </column>
+        </property>
+        <property name="path" type="java.lang.String">
+            <column name="P_STRUCTURE_PATH" length="1024">
+                <comment>结构路径</comment>
+            </column>
+        </property>
+        
+        <set name="productStructureRelationshipSet" inverse="true">
+            <key>
+                <column name="P_STRUCTURE_ID" length="32">
+                    <comment>结构ID</comment>
+                </column>
+            </key>
+            <one-to-many class="cn.digitalpublishing.po.PProductStructureRelationship" />
+        </set>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.digitalpublishing.po.User" table="T_USER">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32">
+            	<comment>id</comment>
+            </column>
+            <generator class="uuid.hex" />
+        </id>
+        
+        <many-to-one name="productTypeId" class="cn.digitalpublishing.po.PProductType" lazy="false" fetch="select">
+            <column name="productTypeId" length="32" />
+        </many-to-one>
+        
+        <property name="username" type="java.lang.String">
+        	<column name="username" length="64">
+        		<comment>用户名</comment>
+        	</column>
+        </property>
+        
+        <property name="password" type="java.lang.String">
+        	<column name="password" length="64">
+        		<comment>密码</comment>
+        	</column>
+        </property>
+        
+        <property name="institutionName" type="java.lang.String">
+        	<column name="institutionName" length="64">
+        		<comment>机构名称</comment>
+        	</column>
+        </property>
+        
+        <property name="telephone" type="java.lang.String">
+        	<column name="telephone" length="32">
+        		<comment>联系方式</comment>
+        	</column>
+        </property>
+        
+        <property name="address" type="java.lang.String">
+        	<column name="address" length="128">
+        		<comment>地址</comment>
+        	</column>
+        </property>
+        
+        <property name="status" type="java.lang.String">
+        	<column name="status" length="8">
+        		<comment>用户状态(0.未审核  1.审核通过 2.已删除)</comment>
+        	</column>
+        </property>
+        
+        <property name="role" type="java.lang.Integer">
+        	<column name="role" length="8">
+        		<comment>角色(0.普通购书会员 1.写书作者 2.机构用户)</comment>
+        	</column>
+        </property>
+        
+        <property name="discount" type="java.lang.Integer">
+        	<column name="discount" length="8">
+        		<comment>折扣</comment>
+        	</column>
+        </property>
+        
+        <property name="integral" type="java.lang.Integer">
+        	<column name="integral" length="8">
+        		<comment>会员积分</comment>
+        	</column>
+        </property>
+        
+        <property name="balance" type="java.math.BigDecimal">
+        	<column name="balance" length="8">
+        		<comment>点卡余额</comment>
+        	</column>
+        </property>
+        
+        <property name="createDate" type="java.util.Date">
+        	<column name="createDate" length="32">
+        		<comment>注册时间</comment>
+        	</column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrContract" table="CR_CONTRACT">
+		<id name="contractId" type="java.lang.String">
+			<column name="CR_CONTRACT_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="contractType" type="java.lang.String">
+			<column name="CR_CONTRACT_TYPE" length="32">
+				<comment>合同类型</comment>
+			</column>
+		</property>
+		<property name="contractName" type="java.lang.String">
+			<column name="CR_CONTRACT_NAME" length="256">
+				<comment>合同名称</comment>
+			</column>
+		</property>
+		<property name="contractDate" type="java.util.Date">
+			<column name="CR_CONTRACT_DATE">
+				<comment>合同签订日期</comment>
+			</column>
+		</property>
+		<property name="contractSource" type="java.lang.String">
+			<column name="CR_CONTRACT_SOURCE" length="32">
+				<comment>合同来源</comment>
+			</column>
+		</property>
+		<property name="contractReason" type="java.lang.String">
+			<column name="CR_CONTRACT_REASON" length="32">
+				<comment>合同原因</comment>
+			</column>
+		</property>
+		<property name="contractExpired" type="java.util.Date">
+			<column name="CR_CONTRACT_EXPIRED">
+				<comment>合同过期日期</comment>
+			</column>
+		</property>
+		<property name="contractDays" type="java.lang.Integer">
+			<column name="CR_CONTRACT_DAYS">
+				<comment>合同过期天数</comment>
+			</column>
+		</property>
+		<property name="contractStatus" type="java.lang.String">
+			<column name="CR_CONTRACT_STATUS" length="32">
+				<comment>合同状态</comment>
+			</column>
+		</property>
+		<property name="contractLicenseDuration" type="java.lang.String">
+			<column name="CR_CONTRACT_LICENSE_DURATION" length="32">
+				<comment>合同License时间</comment>
+			</column>
+		</property>
+		<property name="contractLicenseStartOn" type="java.util.Date">
+			<column name="CR_CONTRACT_LICENSE_START_ON">
+				<comment>合同License开始日期</comment>
+			</column>
+		</property>
+		<property name="contractLicenseEndOn" type="java.util.Date">
+			<column name="CR_CONTRACT_LICENSE_END_ON">
+				<comment>合同License到期日期</comment>
+			</column>
+		</property>
+		<property name="contractLicenseOption" type="java.lang.String">
+			<column name="CR_CONTRACT_LICENSE_OPTION" length="32">
+				<comment>合同License开始选项</comment>
+			</column>
+		</property>
+		<property name="contractAuthorCount" type="java.lang.Integer">
+			<column name="CR_CONTRACT_AUTHOR_COUNT">
+				<comment>合同作者获取免费样书个数</comment>
+			</column>
+		</property>
+		<property name="contractProxyCount" type="java.lang.Integer">
+			<column name="CR_CONTRACT_PROXY_COUNT">
+				<comment>合同代理商获取免费样书个数</comment>
+			</column>
+		</property>
+		<property name="contractBailAmount" type="java.math.BigDecimal">
+			<column name="CR_CONTRACT_BAIL_AMOUNT" precision="10" scale="2">
+				<comment>合同保证金</comment>
+			</column>
+		</property>
+		<property name="contractMaxAmount" type="java.math.BigDecimal">
+			<column name="CR_CONTRACT_MAX_AMOUNT" precision="10" scale="2">
+				<comment>合同最多金额</comment>
+			</column>
+		</property>
+		<property name="contractMinAmount" type="java.math.BigDecimal">
+			<column name="CR_CONTRACT_MIN_AMOUNT" precision="10" scale="2">
+				<comment>合同最少金额</comment>
+			</column>
+		</property>
+		<property name="contractProxyAmount" type="java.math.BigDecimal">
+			<column name="CR_CONTRACT_PROXY_AMOUNT" precision="10" scale="2">
+				<comment>合同代理费</comment>
+			</column>
+		</property>
+<!-- 		<set name="productContractRelationshipSet" inverse="true"> -->
+<!-- 			<key> -->
+<!-- 				<column name="CR_CONTRACT_ID" length="32"> -->
+<!-- 					<comment>合同ID</comment> -->
+<!-- 				</column> -->
+<!-- 			</key> -->
+<!-- 			<one-to-many class="cn.digitalpublishing.po.PProductContractRelationship" /> -->
+<!-- 		</set> -->
+	</class>
+</hibernate-mapping>

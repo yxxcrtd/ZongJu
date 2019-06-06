@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.ShoppingCartDao">
+	
+		<!-- 获取当前用户未支付的商品数 -->
+		<query>
+			<id>getUnPayCount</id>
+			<method>getUnPayCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from ShoppingCart sc</hql>
+			<conditions>
+			    <condition id="userId" discribe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>sc.userId = ?</hql>
+				</condition>
+				<condition id="status" describe="购物状态">
+					<params type="param">
+						<param name="status" type="java.lang.Integer" />
+					</params>
+					<hql>sc.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ShoppingCart</className>
+		</query>
+		
+		<!-- 获取当前用户未支付的商品列表失败 -->
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, count, money, status, createDate, product.id, product.title, product.bookCovers</properties>
+			<fields>sc.id, sc.count, sc.money, sc.status, sc.createDate, b.id, b.title, b.bookCovers</fields>
+			<hql>from ShoppingCart sc left join sc.product b</hql>
+			<conditions>
+			    <condition id="userId" discribe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>sc.userId = ?</hql>
+				</condition>
+				<condition id="product" discribe="产品">
+                    <params type="param">
+                        <param name="product" type="java.lang.String" />
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+				<condition id="status" describe="购物状态">
+					<params type="param">
+						<param name="status" type="java.lang.Integer" />
+					</params>
+					<hql>sc.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ShoppingCart</className>
+		</query>
+		
+		<!-- 根据查询条件获取购物车列表 -->
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, count, money, status, product.id</properties>
+			<fields>sc.id, sc.count, sc.money, sc.status, b.id</fields>
+			<hql>from ShoppingCart sc left join sc.product b</hql>
+			<conditions>
+			    <condition id="userId" discribe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>sc.userId = ?</hql>
+				</condition>
+				<condition id="status" describe="购物状态">
+					<params type="param">
+						<param name="status" type="java.lang.Integer" />
+					</params>
+					<hql>sc.status = ?</hql>
+				</condition>
+				<condition id="product" discribe="产品ID">
+                    <params type="param">
+                        <param name="product" type="java.lang.String" />
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ShoppingCart</className>
+		</query>
+
+	</dao>
+</web-query>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrSubsidaryRight" table="CR_SUBSIDARY_RIGHT">
+		<comment>版税附属权利</comment>
+		<id name="srlicenseId" type="java.lang.String">
+			<column name="CR_SRLICENSE_ID" length="32">
+				<comment>附属权利ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="retainPercent" type="java.math.BigDecimal">
+			<column name="CR_RETAIN_PERCENT" precision="10" scale="2">
+				<comment>预留百分比</comment>
+			</column>
+		</property>
+		<property name="ownerPercent" type="java.math.BigDecimal">
+			<column name="CR_OWNER_PERCENT" precision="10" scale="2">
+				<comment>所有者百分比</comment>
+			</column>
+		</property>
+		<property name="initRate" type="java.math.BigDecimal">
+			<column name="CR_INIT_RATE" precision="10" scale="2">
+				<comment>初始比率</comment>
+			</column>
+		</property>
+		<property name="level" type="java.lang.String">
+			<column name="CR_LEVEL" length="32">
+				<comment>附属权利级别</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CR_STATUS" length="32">
+				<comment>附属权利状态</comment>
+			</column>
+		</property>
+		<property name="royaltyRule" type="java.lang.String">
+			<column name="CR_ROYALTY_RULE" length="32">
+				<comment>版税规则</comment>
+			</column>
+		</property>
+		<property name="adjustRule" type="java.lang.String">
+			<column name="CR_ADJUST_RULE" length="32">
+				<comment>调整规则</comment>
+			</column>
+		</property>
+		<many-to-one name="right" class="cn.digitalpublishing.po.CrRight" fetch="select" lazy="false">
+			<column name="CR_RLICENSE_ID" length="32">
+				<comment>权利授权ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="licenseType" class="cn.digitalpublishing.po.CrLicenseType" fetch="select" lazy="false">
+			<column name="CR_LICENSE_TYPE_ID" length="32">
+				<comment>授权类型ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+<!-- 		<many-to-one name="structureType" class="cn.digitalpublishing.po.PStructureType" fetch="select" lazy="false"> -->
+<!-- 			<column name="P_STYPE_ID" length="32"> -->
+<!-- 				<comment>结构类型ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+		<many-to-one name="structure" class="cn.digitalpublishing.po.PStructure" fetch="select" lazy="false">
+			<column name="P_STRUCTURE_ID" length="32">
+				<comment>结构ID</comment>
+			</column>
+		</many-to-one>
+<!-- 		<many-to-one name="personTypeRelationship" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false"> -->
+<!-- 			<column name="CRM_PERSON_TYPE_ID" length="32"> -->
+<!-- 				<comment>人员类型角色ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+		<set name="lsrRelationshipSet" inverse="true">
+			<key>
+				<column name="CR_SRLICENSE_ID" length="32">
+					<comment>附属权利ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrLsrRelationship" />
+		</set>
+		<set name="csrRelationshipSet" inverse="true">
+			<key>
+				<column name="CR_SRLICENSE_ID" length="32">
+					<comment>附属权利ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrCsrRelationship" />
+		</set>
+		<set name="rlFormulaSet" inverse="true">
+			<key>
+				<column name="CR_SRLICENSE_ID" length="32">
+					<comment>附属权利ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlFormula" />
+		</set>
+	</class>
+</hibernate-mapping>

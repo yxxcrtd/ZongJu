@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrLrcRelationshipDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, rightLanguate</properties>
+			<fields>a.id, a.rightLanguate</fields>
+			<hql>from CrLrcRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="语种权利合同关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+			
+				<condition id="rightLanguate" discribe="语种">
+					<params type="param">
+						<param name="rightLanguate" type="java.lang.String" />
+					</params>
+					<hql>a.rightLanguate like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLrcRelationship</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, language.code, language.name</properties>
+			<fields>a.id, a.language.code, a.language.name</fields>
+			<hql>from CrLrcRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="语种权利合同关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="right_id" discribe="授权ID">
+					<params type="param">
+						<param name="right_id" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="language_code" discribe="语种编码">
+					<params type="param">
+						<param name="language_code" type="java.lang.String" />
+					</params>
+					<hql>a.language.code like ?</hql>
+				</condition>
+				
+				<condition id="language_name" discribe="语种名称">
+					<params type="param">
+						<param name="language_name" type="java.lang.String" />
+					</params>
+					<hql>a.language.name like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLrcRelationship</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrLrcRelationship a</hql>
+			<conditions>
+				<condition id="id" discribe="语种权利合同关系ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+			
+				<condition id="right_id" discribe="授权ID">
+					<params type="param">
+						<param name="right_id" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="language_code" discribe="语种编码">
+					<params type="param">
+						<param name="language_code" type="java.lang.String" />
+					</params>
+					<hql>a.language.code like ?</hql>
+				</condition>
+				
+				<condition id="language_name" discribe="语种名称">
+					<params type="param">
+						<param name="language_name" type="java.lang.String" />
+					</params>
+					<hql>a.language.name like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrLrcRelationship</className>
+		</query>
+	</dao>
+</web-query>

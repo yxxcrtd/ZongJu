@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.digitalpublishing.po.Integral" table="T_INTEGRAL">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32">
+            	<comment>id</comment>
+            </column>
+            <generator class="uuid.hex" />
+        </id>
+        
+        <many-to-one name="user" class="cn.digitalpublishing.po.User" lazy="false" fetch="select">
+            <column name="userId" length="32" />
+        </many-to-one>
+        
+        <property name="source" type="java.lang.String">
+        	<column name="source" length="64">
+        		<comment>来源</comment>
+        	</column>
+        </property>
+        
+        <property name="integral" type="java.lang.Integer">
+        	<column name="integral" length="8">
+        		<comment>会员积分</comment>
+        	</column>
+        </property>
+        
+        <property name="createDate" type="java.util.Date">
+        	<column name="createDate" length="32">
+        		<comment>积分获取时间</comment>
+        	</column>
+        </property>
+    </class>
+</hibernate-mapping>

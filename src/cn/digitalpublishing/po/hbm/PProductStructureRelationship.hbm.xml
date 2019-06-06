@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductStructureRelationship" table="P_PRODUCT_STRUCTURE_RELATIONSHIP" dynamic-insert="true" dynamic-update="true">
+		<id name="id" type="java.lang.String">
+			<column name="P_PRODUCT_STRUCTURE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="status" type="java.lang.String">
+			<column name="P_PRODUCT_STRUCTURE_STATUS" length="32">
+				<comment>产品和结构关系状态</comment>
+			</column>
+		</property>
+        <property name="name" type="java.lang.String">
+            <column name="P_PRODUCT_STRUCTURE_NAME" length="256">
+                <comment>产品和结构关系名称</comment>
+            </column>
+        </property>
+        <property name="structureOrder" type="java.lang.Integer">
+            <column name="P_PRODUCT_STRUCTURE_STC_ORDER">
+                <comment>产品和结构关系结构顺序</comment>
+            </column>
+        </property>
+        <property name="elementOrder" type="java.lang.Integer">
+            <column name="P_PRODUCT_STRUCTURE_ELE_ORDER">
+                <comment>产品和结构关系素材顺序</comment>
+            </column>
+        </property>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="parentProductStructureRelationship" class="cn.digitalpublishing.po.PProductStructureRelationship" fetch="select" lazy="false">
+			<column name="P_PRODUCT_STRUCTURE_PARENT_ID" length="32">
+				<comment>产品和结构关系ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="structure" class="cn.digitalpublishing.po.PStructure" fetch="select" lazy="false">
+			<column name="P_STRUCTURE_ID" length="32">
+				<comment>结构ID</comment>
+			</column>
+		</many-to-one>
+		<set name="productStructureRelationshipSet" inverse="true">
+			<key>
+				<column name="P_PRODUCT_STRUCTURE_PARENT_ID" length="32">
+					<comment>产品和结构关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductStructureRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

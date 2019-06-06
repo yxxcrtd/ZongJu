@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlOwnerRoyaltyDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rloRoyaltyId, royaltyDiscount, royaltyText, reserveReturn, royaltyIndividual, chapterRateRise, initRate, market, priceType, taxDescription, rulesState, royaltyType, adjustRule</properties>
+			<fields>a.rloRoyaltyId, a.royaltyDiscount, a.royaltyText, a.reserveReturn, a.royaltyIndividual, a.chapterRateRise, a.initRate, a.market, a.priceType, a.taxDescription, a.rulesState, a.royaltyType, a.adjustRule</fields>
+			<hql>from CrRlOwnerRoyalty a</hql>
+			<conditions>
+				<condition id="rloRoyaltyId" discribe="人员版税计算ID">
+					<params type="param">
+						<param name="rloRoyaltyId" type="java.lang.String" />
+					</params>
+					<hql>a.rloRoyaltyId = ?</hql>
+				</condition>
+			
+				<condition id="royaltyDiscount" discribe="版税折扣">
+					<params type="param">
+						<param name="royaltyDiscount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.royaltyDiscount = ?</hql>
+				</condition>
+				
+				<condition id="royaltyText" discribe="版税信息">
+					<params type="param">
+						<param name="royaltyText" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyText like ?</hql>
+				</condition>
+				
+				<condition id="chapterRateRise" discribe="意率上升">
+					<params type="param">
+						<param name="chapterRateRise" type="java.lang.Integer" />
+					</params>
+					<hql>a.chapterRateRise = ?</hql>
+				</condition>
+				
+				<condition id="initRate" discribe="初始比率">
+					<params type="param">
+						<param name="initRate" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.initRate = ?</hql>
+				</condition>
+				
+				<condition id="market" discribe="市场">
+					<params type="param">
+						<param name="market" type="java.lang.String" />
+					</params>
+					<hql>a.market like ?</hql>
+				</condition>
+				
+				<condition id="priceType" discribe="价格类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType like ?</hql>
+				</condition>
+				
+				<condition id="taxDescription" discribe="税务说明">
+					<params type="param">
+						<param name="taxDescription" type="java.lang.String" />
+					</params>
+					<hql>a.taxDescription like ?</hql>
+				</condition>
+				
+				<condition id="rulesState" discribe="规则状态">
+					<params type="param">
+						<param name="rulesState" type="java.lang.String" />
+					</params>
+					<hql>a.rulesState like ?</hql>
+				</condition>
+				
+				<condition id="royaltyType" discribe="版税类型">
+					<params type="param">
+						<param name="royaltyType" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyType like ?</hql>
+				</condition>
+				
+				<condition id="adjustRule" discribe="调整规则">
+					<params type="param">
+						<param name="adjustRule" type="java.lang.String" />
+					</params>
+					<hql>a.adjustRule like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerRoyalty</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>rloRoyaltyId, royaltyDiscount, royaltyText, reserveReturn, royaltyIndividual, chapterRateRise, initRate, market, priceType, taxDescription, rulesState, royaltyType, adjustRule</properties>
+			<fields>a.rloRoyaltyId, a.royaltyDiscount, a.royaltyText, a.reserveReturn, a.royaltyIndividual, a.chapterRateRise, a.initRate, (select name from BDic e where e.id = a.market), (select name from BDic e where e.id = a.priceType), (select name from BDic e where e.id = a.taxDescription), a.rulesState, (select name from BDic e where e.id = a.royaltyType), a.adjustRule</fields>
+			<hql>from CrRlOwnerRoyalty a</hql>
+			<conditions>
+				<condition id="rloRoyaltyId" discribe="人员版税计算ID">
+					<params type="param">
+						<param name="rloRoyaltyId" type="java.lang.String" />
+					</params>
+					<hql>a.rloRoyaltyId = ?</hql>
+				</condition>
+			
+				<condition id="royaltyDiscount" discribe="版税折扣">
+					<params type="param">
+						<param name="royaltyDiscount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.royaltyDiscount = ?</hql>
+				</condition>
+				
+				<condition id="royaltyText" discribe="版税信息">
+					<params type="param">
+						<param name="royaltyText" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyText like ?</hql>
+				</condition>
+				
+				<condition id="chapterRateRise" discribe="意率上升">
+					<params type="param">
+						<param name="chapterRateRise" type="java.lang.Integer" />
+					</params>
+					<hql>a.chapterRateRise = ?</hql>
+				</condition>
+				
+				<condition id="initRate" discribe="初始比率">
+					<params type="param">
+						<param name="initRate" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.initRate = ?</hql>
+				</condition>
+				
+				<condition id="market" discribe="市场">
+					<params type="param">
+						<param name="market" type="java.lang.String" />
+					</params>
+					<hql>a.market like ?</hql>
+				</condition>
+				
+				<condition id="priceType" discribe="价格类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType like ?</hql>
+				</condition>
+				
+				<condition id="taxDescription" discribe="税务说明">
+					<params type="param">
+						<param name="taxDescription" type="java.lang.String" />
+					</params>
+					<hql>a.taxDescription like ?</hql>
+				</condition>
+				
+				<condition id="rulesState" discribe="规则状态">
+					<params type="param">
+						<param name="rulesState" type="java.lang.String" />
+					</params>
+					<hql>a.rulesState like ?</hql>
+				</condition>
+				
+				<condition id="royaltyType" discribe="版税类型">
+					<params type="param">
+						<param name="royaltyType" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyType like ?</hql>
+				</condition>
+				
+				<condition id="adjustRule" discribe="调整规则">
+					<params type="param">
+						<param name="adjustRule" type="java.lang.String" />
+					</params>
+					<hql>a.adjustRule like ?</hql>
+				</condition>
+				
+				<condition id="rlOwner_rlownerId" discribe="权利授权者ID">
+					<params type="param">
+						<param name="rlOwner_rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwner.rlownerId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerRoyalty</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rloRoyaltyId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlOwnerRoyalty a</hql>
+			<conditions>
+				<condition id="rloRoyaltyId" discribe="人员版税计算ID">
+					<params type="param">
+						<param name="rloRoyaltyId" type="java.lang.String" />
+					</params>
+					<hql>a.rloRoyaltyId = ?</hql>
+				</condition>
+			
+				<condition id="royaltyDiscount" discribe="版税折扣">
+					<params type="param">
+						<param name="royaltyDiscount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.royaltyDiscount = ?</hql>
+				</condition>
+				
+				<condition id="royaltyText" discribe="版税信息">
+					<params type="param">
+						<param name="royaltyText" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyText like ?</hql>
+				</condition>
+				
+				<condition id="chapterRateRise" discribe="意率上升">
+					<params type="param">
+						<param name="chapterRateRise" type="java.lang.Integer" />
+					</params>
+					<hql>a.chapterRateRise = ?</hql>
+				</condition>
+				
+				<condition id="initRate" discribe="初始比率">
+					<params type="param">
+						<param name="initRate" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.initRate = ?</hql>
+				</condition>
+				
+				<condition id="market" discribe="市场">
+					<params type="param">
+						<param name="market" type="java.lang.String" />
+					</params>
+					<hql>a.market like ?</hql>
+				</condition>
+				
+				<condition id="priceType" discribe="价格类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType like ?</hql>
+				</condition>
+				
+				<condition id="taxDescription" discribe="税务说明">
+					<params type="param">
+						<param name="taxDescription" type="java.lang.String" />
+					</params>
+					<hql>a.taxDescription like ?</hql>
+				</condition>
+				
+				<condition id="rulesState" discribe="规则状态">
+					<params type="param">
+						<param name="rulesState" type="java.lang.String" />
+					</params>
+					<hql>a.rulesState like ?</hql>
+				</condition>
+				
+				<condition id="royaltyType" discribe="版税类型">
+					<params type="param">
+						<param name="royaltyType" type="java.lang.String" />
+					</params>
+					<hql>a.royaltyType like ?</hql>
+				</condition>
+				
+				<condition id="adjustRule" discribe="调整规则">
+					<params type="param">
+						<param name="adjustRule" type="java.lang.String" />
+					</params>
+					<hql>a.adjustRule like ?</hql>
+				</condition>
+				
+				<condition id="rlOwner_rlownerId" discribe="权利授权者ID">
+					<params type="param">
+						<param name="rlOwner_rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwner.rlownerId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerRoyalty</className>
+		</query>
+	</dao>
+</web-query>

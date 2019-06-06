@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <!-- 数据词典 -->
+	<bean id="dicClassService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.BDicClassServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!--产品信息 -->
+	<bean id="productService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PProductServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 产品分类 -->
+	<bean id="productTypeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PProductTypeServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 碎片化 -->
+	<bean id="structureService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PStructureServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+    <!-- 碎片化结构 -->
+	<bean id="productElementService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PElementServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 产品许可 -->
+    <bean id="productLicenseService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.PProductLicenseServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+    <!-- 版权信息 -->
+	<bean id="copyrightService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CopyrightServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 合同 -->
+	<bean id="crContractService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrContractServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 国别权利合同关系 -->
+	<bean id="crcRelationshipService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrCrcRelationshipServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 国别附属权利关系 -->
+	<bean id="csrRelationshipService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrCsrRelationshipServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 授权类型 -->
+	<bean id="crLicenseTypeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrLicenseTypeServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 语种权利合同关系 -->
+	<bean id="lrcRelationshipService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrLrcRelationshipServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 语种附属权利关系 -->
+	<bean id="lsrRelationshipService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrLsrRelationshipServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 权利授权 -->
+	<bean id="crRightService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRightServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 计算公式 -->
+	<bean id="crFormulaService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlFormulaServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 权利授权者 -->
+	<bean id="crOwnerService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlOwnerServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 预付款及固定费用 -->
+	<bean id="crOwnerFeeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlOwnerFeeServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 付款对象-->
+	<bean id="crOwnerPayeeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlOwnerPayeeServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 人员版税计算规则 -->
+	<bean id="crOwnerRoyaltyService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlOwnerRoyaltyServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 权利授权产品 -->
+	<bean id="crProductService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlProductServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 版税规则库-->
+	<bean id="crRoyaltyRuleService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrRlRoyaltyRuleServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 版税附属权利-->
+	<bean id="subsidaryRightService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.CrSubsidaryRightServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 用户 -->
+	<bean id="userService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.UserServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 文章发布 -->
+	<bean id="articleService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.ArticleServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+	<!-- 版权交易 -->
+	<bean id="publishTradeService" parent="baseTxProxy">
+		<property name="target">
+			<bean class="cn.digitalpublishing.service.impl.PublishTradeServiceImpl" parent="baseService" />
+		</property>
+	</bean>
+    <!-- 素材打包 -->
+    <bean id="compressService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.CompressServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+    <!-- 打包记录 -->
+    <bean id="recordCompressService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.RecordCompressServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+	<!-- 购物车 -->
+    <bean id="shoppingCartService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.ShoppingCartServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+	<!-- 订单 -->
+    <bean id="orderService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.OrderServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+	<!-- 水印 -->
+    <bean id="watermarkService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.WatermarkServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+	<!-- pdf -->
+    <bean id="pdfservice" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.PDFServiceImpl"/>
+        </property>
+    </bean>
+    <!-- 积分记录 -->
+    <bean id="integralService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.IntegralServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+    <!-- 充值记录 -->
+    <bean id="rechargeService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.RechargeServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+     <!-- 图书章-->
+    <bean id="chapterService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.ChapterServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+     <!-- 图书章-->
+    <bean id="sectionService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.SectionServiceImpl" parent="baseService"/>
+        </property>
+    </bean>
+    <!-- 加密-->
+    <bean id="coderService" parent="baseTxProxy">
+        <property name="target">
+            <bean class="cn.digitalpublishing.service.impl.CoderServiceImpl"/>
+        </property>
+    </bean>
+</beans>

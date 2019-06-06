@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SalePackBean" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e854b008-0eaf-4489-8b95-9005d66d2d4c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="dc7890a9-6a98-47a0-8c8b-d97cf69226bf"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["F:\\jrxml\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="code" class="java.lang.String">
+		<fieldDescription><![CDATA[code]]></fieldDescription>
+	</field>
+	<field name="sumNum" class="java.lang.Integer">
+		<fieldDescription><![CDATA[sumNum]]></fieldDescription>
+	</field>
+	<field name="typeNum" class="java.lang.Integer">
+		<fieldDescription><![CDATA[typeNum]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String">
+		<fieldDescription><![CDATA[address]]></fieldDescription>
+	</field>
+	<field name="accountCode" class="java.lang.String">
+		<fieldDescription><![CDATA[accountCode]]></fieldDescription>
+	</field>
+	<field name="date" class="java.util.Date">
+		<fieldDescription><![CDATA[date]]></fieldDescription>
+	</field>
+	<field name="realPrice" class="java.lang.Double">
+		<fieldDescription><![CDATA[realPrice]]></fieldDescription>
+	</field>
+	<field name="discountPrice" class="java.lang.Double">
+		<fieldDescription><![CDATA[discountPrice]]></fieldDescription>
+	</field>
+	<field name="accountName" class="java.lang.String">
+		<fieldDescription><![CDATA[accountName]]></fieldDescription>
+	</field>
+	<field name="salePackCode" class="java.lang.String">
+		<fieldDescription><![CDATA[salePackCode]]></fieldDescription>
+	</field>
+	<field name="detailList" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[detailList]]></fieldDescription>
+	</field>
+	<field name="allCountPrice" class="java.lang.Double">
+		<fieldDescription><![CDATA[allCountPrice]]></fieldDescription>
+	</field>
+	<field name="mailCode" class="java.lang.String">
+		<fieldDescription><![CDATA[mailCode]]></fieldDescription>
+	</field>
+	<field name="salepackList" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[salepackList]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="610" splitType="Stretch">
+			<staticText>
+				<reportElement x="179" y="0" width="175" height="20" uuid="c91be41e-adc7-41d2-8411-a8a8a44a5e73"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[中国图书进出口总公司图书部装箱清单]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="26" width="51" height="20" uuid="4db384d0-454b-49f7-aba2-1abc3d3bf409"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[户号]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="26" width="100" height="20" uuid="1b1f9dd7-8c65-4290-892e-5d8b45d0d179"/>
+				<textFieldExpression><![CDATA[$F{accountCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="179" y="26" width="47" height="20" uuid="13028778-ad02-4b1b-b879-ecd6c196768c"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[日期]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="226" y="26" width="100" height="20" uuid="90a0773b-131c-4adb-83ab-0c336c29ca5a"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="29" width="52" height="20" uuid="8d2bf0f9-3c38-4e14-930f-c76d82ccf07e"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[装箱单号]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="406" y="29" width="100" height="20" uuid="da80fd7f-2e24-4261-ad4d-bda215a12f84"/>
+				<textFieldExpression><![CDATA[$F{salePackCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="46" width="49" height="20" uuid="552558be-a6bf-4f86-a048-7450912c6eac"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[户名]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="53" y="46" width="100" height="20" uuid="0f3680cd-f6c0-4a9c-87f7-8af9113c79d2"/>
+				<textFieldExpression><![CDATA[$F{accountName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="46" width="47" height="20" uuid="843431b4-39e5-48ad-99a7-700a0be6dfd0"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[地址]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="246" y="46" width="100" height="20" uuid="0a7fe75b-45ab-46bb-83b9-b9aa85b343d3"/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="-3" y="84" width="200" height="39" uuid="53210f82-47c9-40a1-864c-508b0492a39e"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{detailList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detail.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="20" y="66" width="66" height="20" uuid="c56b6628-7911-4c96-a518-6c58255fabbf"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[发订号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="66" width="41" height="20" uuid="7a66a9aa-f91d-469e-bb2c-27bbc213116e"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[合计]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="66" width="45" height="20" uuid="52966cff-8c0d-4a22-b6aa-277e26e2bf40"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[单价]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="66" width="41" height="20" uuid="18cac683-02bf-41be-a1e5-0f443e52a24c"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[册数]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="66" width="55" height="19" uuid="edb4c002-07ca-4389-b18a-19ff4e28ca29"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ISBN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="66" width="60" height="20" uuid="a0628126-72a5-43cb-9cdb-50008f7c3c16"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[订单流水号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="66" width="100" height="19" uuid="351b7345-a2ed-4f31-b93c-036763819031"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[书名]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-73" y="-53" width="555" height="1" uuid="b55ca9fb-b88c-4b1e-b065-3abb734b08a4"/>
+			</line>
+			<line>
+				<reportElement x="5" y="543" width="538" height="1" uuid="d254e8af-9d52-4445-b08b-e46688cd369f"/>
+			</line>
+			<line>
+				<reportElement x="5" y="565" width="540" height="1" uuid="50cc434a-87bd-40aa-91cb-0f7101d481b9"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="545" width="22" height="20" uuid="667282e2-540b-461d-9254-0119e5799ba3"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[种数]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="545" width="30" height="20" uuid="58663232-3652-49ad-b2ae-284059eea4b4"/>
+				<textFieldExpression><![CDATA[$F{typeNum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="545" width="33" height="20" uuid="ee3f5f5d-e454-44f3-b10f-55e471959988"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[册数]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="544" width="59" height="20" uuid="44f2df3d-554c-479f-b4f3-dab4abfc2d86"/>
+				<textFieldExpression><![CDATA[$F{sumNum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="182" y="545" width="59" height="20" uuid="c124bcd1-8c38-4ebd-a2b7-9fba11392b8f"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[人民币合计]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="255" y="544" width="32" height="20" uuid="629b94a5-43ff-4602-8d77-1a98728b424d"/>
+				<textFieldExpression><![CDATA[$F{allCountPrice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="544" width="51" height="20" uuid="2bed574d-0fea-426a-a22c-32116e9b8e87"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[折扣人民币]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="544" width="52" height="20" uuid="a99cf67f-1fad-442c-88a1-40e77383300b"/>
+				<textFieldExpression><![CDATA[$F{discountPrice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="401" y="545" width="48" height="20" uuid="b3f8ceb3-1c3f-4143-ad5d-f70a073d4398"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[实收人民币]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="471" y="544" width="64" height="20" uuid="b2b17885-e6ef-4c94-98bd-9ccf8f753ecb"/>
+				<textFieldExpression><![CDATA[$F{realPrice}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="65" width="535" height="1" uuid="947a2c53-879b-420e-84c3-52aadce2cd98"/>
+			</line>
+			<line>
+				<reportElement x="-3" y="84" width="538" height="1" uuid="0236677e-69f8-4618-8b7d-efbbabed31eb"/>
+			</line>
+			<subreport>
+				<reportElement x="5" y="566" width="233" height="41" uuid="09714c32-0646-488d-b638-014d6a74d3a9"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{salepackList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "accountInfo.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="271" y="566" width="233" height="41" uuid="cf7707dc-9436-497b-ad05-f80c7d138d72"/>
+				<subreportParameter name="accountCode">
+					<subreportParameterExpression><![CDATA[$F{accountCode}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="accountName">
+					<subreportParameterExpression><![CDATA[$F{accountName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="address">
+					<subreportParameterExpression><![CDATA[$F{address}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="mailCode">
+					<subreportParameterExpression><![CDATA[$F{mailCode}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="salePackCode">
+					<subreportParameterExpression><![CDATA[$F{salePackCode}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sumNum">
+					<subreportParameterExpression><![CDATA[$F{sumNum}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{salepackList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "accountInfo.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="19" splitType="Stretch"/>
+	</summary>
+</jasperReport>

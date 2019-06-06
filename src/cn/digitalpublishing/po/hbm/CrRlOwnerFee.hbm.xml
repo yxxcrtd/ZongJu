@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlOwnerFee" table="CR_RL_OWNER_FEE">
+		<comment>预付款及固定费用</comment>
+		<id name="fixfeeId" type="java.lang.String">
+			<column name="CR_FIXFEE_ID" length="32">
+				<comment>费用ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="expenseType" type="java.lang.String">
+			<column name="CR_EXPENSE_TYPE" length="32">
+				<comment>费用类型</comment>
+			</column>
+		</property>
+		<property name="fixfeeVal" type="java.math.BigDecimal">
+			<column name="CR_FIXFEE_VAL" precision="10" scale="2">
+				<comment>费用值</comment>
+			</column>
+		</property>
+		<many-to-one name="rlOwner" class="cn.digitalpublishing.po.CrRlOwner" fetch="select" lazy="false">
+			<column name="CR_RLOWNER_ID" length="32">
+				<comment>授权者ID</comment>
+			</column>
+		</many-to-one>
+<!-- 		<many-to-one name="currency" class="cn.digitalpublishing.po.BCurrency" fetch="select" lazy="false"> -->
+<!-- 			<column name="B_CURRENCY_ID" length="32"> -->
+<!-- 				<comment>币种信息ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+		<set name="rlFixfeePaymentTermSet" inverse="true">
+			<key>
+				<column name="CR_FIXFEE_ID" length="32">
+					<comment>费用ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlFixfeePaymentTerm" />
+		</set>
+	</class>
+</hibernate-mapping>

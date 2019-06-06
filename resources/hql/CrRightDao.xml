@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRightDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rlicenseId, rlicenseName, rlicenseReference, rlicenseNum, rlicenseStarton, rlicenseEndon, manuscriptDelivery, pubDeadline, owerCopy, agentCopy, guaranteePayment, maxPayment, minPayment, agentPercent, lastedDate, paymentTrem, firstCloseDate, retainPercent, minRetain, retainPeriod, retainUntil, periodNum, status, rcexclusive, start, rlperiod</properties>
+			<fields>a.rlicenseId, a.rlicenseName, a.rlicenseReference, a.rlicenseNum, a.rlicenseStarton, a.rlicenseEndon, a.manuscriptDelivery, a.pubDeadline, a.owerCopy, a.agentCopy, a.guaranteePayment, a.maxPayment, a.minPayment, a.agentPercent, a.lastedDate, a.paymentTrem, a.firstCloseDate, a.retainPercent, a.minRetain, a.retainPeriod, a.retainUntil, a.periodNum, a.status, a.rcexclusive, a.start, a.rlperiod</fields>
+			<hql>from CrRight a</hql>
+			<conditions>
+				<condition id="rlicenseId" discribe="权利授权ID">
+					<params type="param">
+						<param name="rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="rlicenseName" discribe="权利授权名称">
+					<params type="param">
+						<param name="rlicenseName" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseName like ?</hql>
+				</condition>
+				
+				<condition id="rlicenseReference" discribe="权利授权备注">
+					<params type="param">
+						<param name="rlicenseReference" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseReference like ?</hql>
+				</condition>
+				
+				<condition id="rlicenseNum" discribe="授权量">
+					<params type="param">
+						<param name="rlicenseNum" type="java.lang.Integer" />
+					</params>
+					<hql>a.rlicenseNum = ?</hql>
+				</condition>
+				
+				<condition id="owerCopy" discribe="作者副本数">
+					<params type="param">
+						<param name="owerCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.owerCopy = ?</hql>
+				</condition>
+				
+				<condition id="agentCopy" discribe="代理商副本数">
+					<params type="param">
+						<param name="agentCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.agentCopy = ?</hql>
+				</condition>
+				
+				<condition id="guaranteePayment" discribe="保证金">
+					<params type="param">
+						<param name="guaranteePayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.guaranteePayment = ?</hql>
+				</condition>
+				
+				<condition id="maxPayment" discribe="最大付款">
+					<params type="param">
+						<param name="maxPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.maxPayment = ?</hql>
+				</condition>
+				
+				<condition id="minPayment" discribe="最小付款">
+					<params type="param">
+						<param name="minPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minPayment = ?</hql>
+				</condition>
+				
+				<condition id="agentPercent" discribe="代理费比率">
+					<params type="param">
+						<param name="agentPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.agentPercent = ?</hql>
+				</condition>
+				
+				<condition id="paymentTrem" discribe="付款条款">
+					<params type="param">
+						<param name="paymentTrem" type="java.lang.Integer" />
+					</params>
+					<hql>a.paymentTrem = ?</hql>
+				</condition>
+				
+				<condition id="retainPercent" discribe="每次预留百分比">
+					<params type="param">
+						<param name="retainPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.retainPercent = ?</hql>
+				</condition>
+				
+				<condition id="minRetain" discribe="每次最小预留">
+					<params type="param">
+						<param name="minRetain" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minRetain = ?</hql>
+				</condition>
+				
+				<condition id="retainPeriod" discribe="预留期次">
+					<params type="param">
+						<param name="retainPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainPeriod = ?</hql>
+				</condition>
+				
+				<condition id="retainUntil" discribe="预留到期次">
+					<params type="param">
+						<param name="retainUntil" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainUntil = ?</hql>
+				</condition>
+				
+				<condition id="periodNum" discribe="当前期次">
+					<params type="param">
+						<param name="periodNum" type="java.lang.Integer" />
+					</params>
+					<hql>a.periodNum = ?</hql>
+				</condition>
+				
+				<condition id="status" discribe="权利合同状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status like ?</hql>
+				</condition>
+				
+				<condition id="rcexclusive" discribe="权利是否独享">
+					<params type="param">
+						<param name="rcexclusive" type="java.lang.String" />
+					</params>
+					<hql>a.rcexclusive like ?</hql>
+				</condition>
+				
+				<condition id="start" discribe="授权开始方式">
+					<params type="param">
+						<param name="start" type="java.lang.String" />
+					</params>
+					<hql>a.start like ?</hql>
+				</condition>
+				
+				<condition id="rlperiod" discribe="结算公告周期">
+					<params type="param">
+						<param name="rlperiod" type="java.lang.String" />
+					</params>
+					<hql>a.rlperiod like ?</hql>
+				</condition>
+				
+				<condition id="startOn" describe="授权开始时间">
+					<params type="param">
+						<param name="startOn" type="java.util.Date" />
+					</params>
+					<hql>a.rlicenseStarton <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				
+				<condition id="endOn" describe="授权结束时间">
+					<params type="param">
+						<param name="endOn" type="java.util.Date" />
+					</params>
+					<hql>a.rlicenseStarton <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRight</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>rlicenseId, rlicenseName, rlicenseReference, rlicenseNum, rlicenseStarton, rlicenseEndon, manuscriptDelivery, pubDeadline, owerCopy, agentCopy, guaranteePayment, maxPayment, minPayment, agentPercent, lastedDate, paymentTrem, firstCloseDate, retainPercent, minRetain, retainPeriod, retainUntil, periodNum, status, rcexclusive, start, rlperiod, licenseType.licenseTypeName</properties>
+			<fields>a.rlicenseId, a.rlicenseName, a.rlicenseReference, a.rlicenseNum, a.rlicenseStarton, a.rlicenseEndon, a.manuscriptDelivery, a.pubDeadline, a.owerCopy, a.agentCopy, a.guaranteePayment, a.maxPayment, a.minPayment, a.agentPercent, a.lastedDate, a.paymentTrem, a.firstCloseDate, a.retainPercent, a.minRetain, a.retainPeriod, a.retainUntil, a.periodNum, (select name from BDic e where e.id = a.status), a.rcexclusive, a.start, (select name from BDic e where e.id = a.rlperiod), a.licenseType.licenseTypeName</fields>
+			<hql>from CrRight a</hql>
+			<conditions>
+				<condition id="rlicenseId" discribe="权利授权ID">
+					<params type="param">
+						<param name="rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="rlicenseName" discribe="权利授权名称">
+					<params type="param">
+						<param name="rlicenseName" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseName like ?</hql>
+				</condition>
+				
+				<condition id="rlicenseReference" discribe="权利授权备注">
+					<params type="param">
+						<param name="rlicenseReference" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseReference like ?</hql>
+				</condition>
+				
+				<condition id="rlicenseNum" discribe="授权量">
+					<params type="param">
+						<param name="rlicenseNum" type="java.lang.Integer" />
+					</params>
+					<hql>a.rlicenseNum = ?</hql>
+				</condition>
+				
+				<condition id="owerCopy" discribe="作者副本数">
+					<params type="param">
+						<param name="owerCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.owerCopy = ?</hql>
+				</condition>
+				
+				<condition id="agentCopy" discribe="代理商副本数">
+					<params type="param">
+						<param name="agentCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.agentCopy = ?</hql>
+				</condition>
+				
+				<condition id="guaranteePayment" discribe="保证金">
+					<params type="param">
+						<param name="guaranteePayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.guaranteePayment = ?</hql>
+				</condition>
+				
+				<condition id="maxPayment" discribe="最大付款">
+					<params type="param">
+						<param name="maxPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.maxPayment = ?</hql>
+				</condition>
+				
+				<condition id="minPayment" discribe="最小付款">
+					<params type="param">
+						<param name="minPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minPayment = ?</hql>
+				</condition>
+				
+				<condition id="agentPercent" discribe="代理费比率">
+					<params type="param">
+						<param name="agentPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.agentPercent = ?</hql>
+				</condition>
+				
+				<condition id="paymentTrem" discribe="付款条款">
+					<params type="param">
+						<param name="paymentTrem" type="java.lang.Integer" />
+					</params>
+					<hql>a.paymentTrem = ?</hql>
+				</condition>
+				
+				<condition id="retainPercent" discribe="每次预留百分比">
+					<params type="param">
+						<param name="retainPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.retainPercent = ?</hql>
+				</condition>
+				
+				<condition id="minRetain" discribe="每次最小预留">
+					<params type="param">
+						<param name="minRetain" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minRetain = ?</hql>
+				</condition>
+				
+				<condition id="retainPeriod" discribe="预留期次">
+					<params type="param">
+						<param name="retainPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainPeriod = ?</hql>
+				</condition>
+				
+				<condition id="retainUntil" discribe="预留到期次">
+					<params type="param">
+						<param name="retainUntil" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainUntil = ?</hql>
+				</condition>
+				
+				<condition id="periodNum" discribe="当前期次">
+					<params type="param">
+						<param name="periodNum" type="java.lang.Integer" />
+					</params>
+					<hql>a.periodNum = ?</hql>
+				</condition>
+				
+				<condition id="status" discribe="权利合同状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status like ?</hql>
+				</condition>
+				
+				<condition id="rcexclusive" discribe="权利是否独享">
+					<params type="param">
+						<param name="rcexclusive" type="java.lang.String" />
+					</params>
+					<hql>a.rcexclusive like ?</hql>
+				</condition>
+				
+				<condition id="start" discribe="授权开始方式">
+					<params type="param">
+						<param name="start" type="java.lang.String" />
+					</params>
+					<hql>a.start like ?</hql>
+				</condition>
+				
+				<condition id="rlperiod" discribe="结算公告周期">
+					<params type="param">
+						<param name="rlperiod" type="java.lang.String" />
+					</params>
+					<hql>a.rlperiod like ?</hql>
+				</condition>
+				
+				<condition id="startOn" describe="授权开始时间">
+					<params type="param">
+						<param name="startOn" type="java.util.Date" />
+					</params>
+					<hql>a.rlicenseStarton <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				
+				<condition id="endOn" describe="授权结束时间">
+					<params type="param">
+						<param name="endOn" type="java.util.Date" />
+					</params>
+					<hql>a.rlicenseStarton <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRight</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rlicenseId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRight a</hql>
+			<conditions>
+				<condition id="rlicenseId" discribe="权利授权ID">
+					<params type="param">
+						<param name="rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseId = ?</hql>
+				</condition>
+			
+				<condition id="rlicenseName" discribe="权利授权名称">
+					<params type="param">
+						<param name="rlicenseName" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseName like ?</hql>
+				</condition>
+				
+				<condition id="rlicenseReference" discribe="权利授权备注">
+					<params type="param">
+						<param name="rlicenseReference" type="java.lang.String" />
+					</params>
+					<hql>a.rlicenseReference like ?</hql>
+				</condition>
+				
+				<condition id="rlicenseNum" discribe="授权量">
+					<params type="param">
+						<param name="rlicenseNum" type="java.lang.Integer" />
+					</params>
+					<hql>a.rlicenseNum = ?</hql>
+				</condition>
+				
+				<condition id="owerCopy" discribe="作者副本数">
+					<params type="param">
+						<param name="owerCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.owerCopy = ?</hql>
+				</condition>
+				
+				<condition id="agentCopy" discribe="代理商副本数">
+					<params type="param">
+						<param name="agentCopy" type="java.lang.Integer" />
+					</params>
+					<hql>a.agentCopy = ?</hql>
+				</condition>
+				
+				<condition id="guaranteePayment" discribe="保证金">
+					<params type="param">
+						<param name="guaranteePayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.guaranteePayment = ?</hql>
+				</condition>
+				
+				<condition id="maxPayment" discribe="最大付款">
+					<params type="param">
+						<param name="maxPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.maxPayment = ?</hql>
+				</condition>
+				
+				<condition id="minPayment" discribe="最小付款">
+					<params type="param">
+						<param name="minPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minPayment = ?</hql>
+				</condition>
+				
+				<condition id="agentPercent" discribe="代理费比率">
+					<params type="param">
+						<param name="agentPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.agentPercent = ?</hql>
+				</condition>
+				
+				<condition id="paymentTrem" discribe="付款条款">
+					<params type="param">
+						<param name="paymentTrem" type="java.lang.Integer" />
+					</params>
+					<hql>a.paymentTrem = ?</hql>
+				</condition>
+				
+				<condition id="retainPercent" discribe="每次预留百分比">
+					<params type="param">
+						<param name="retainPercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.retainPercent = ?</hql>
+				</condition>
+				
+				<condition id="minRetain" discribe="每次最小预留">
+					<params type="param">
+						<param name="minRetain" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.minRetain = ?</hql>
+				</condition>
+				
+				<condition id="retainPeriod" discribe="预留期次">
+					<params type="param">
+						<param name="retainPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainPeriod = ?</hql>
+				</condition>
+				
+				<condition id="retainUntil" discribe="预留到期次">
+					<params type="param">
+						<param name="retainUntil" type="java.lang.Integer" />
+					</params>
+					<hql>a.retainUntil = ?</hql>
+				</condition>
+				
+				<condition id="periodNum" discribe="当前期次">
+					<params type="param">
+						<param name="periodNum" type="java.lang.Integer" />
+					</params>
+					<hql>a.periodNum = ?</hql>
+				</condition>
+				
+				<condition id="status" discribe="权利合同状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status like ?</hql>
+				</condition>
+				
+				<condition id="rcexclusive" discribe="权利是否独享">
+					<params type="param">
+						<param name="rcexclusive" type="java.lang.String" />
+					</params>
+					<hql>a.rcexclusive like ?</hql>
+				</condition>
+				
+				<condition id="start" discribe="授权开始方式">
+					<params type="param">
+						<param name="start" type="java.lang.String" />
+					</params>
+					<hql>a.start like ?</hql>
+				</condition>
+				
+				<condition id="rlperiod" discribe="结算公告周期">
+					<params type="param">
+						<param name="rlperiod" type="java.lang.String" />
+					</params>
+					<hql>a.rlperiod like ?</hql>
+				</condition>
+				
+				<condition id="startOn" describe="授权开始时间">
+					<params type="param">
+						<param name="startOn" type="java.util.Date" />
+					</params>
+					<hql>a.rlicenseStarton <![CDATA[>]]><![CDATA[=]]> ? </hql>
+				</condition>
+				
+				<condition id="endOn" describe="授权结束时间">
+					<params type="param">
+						<param name="endOn" type="java.util.Date" />
+					</params>
+					<hql>a.rlicenseStarton <![CDATA[<]]><![CDATA[=]]> ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRight</className>
+		</query>
+	</dao>
+</web-query>

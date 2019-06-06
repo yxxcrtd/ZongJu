@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PublishTradeDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,sourceId.id,version,downPayment,tradeDate,proportion</properties>
+			<fields>p.id,p.sourceId.id,p.version,p.downPayment,p.tradeDate,p.proportion</fields>
+			<hql>from PublishTrade p</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="sourceId" describe="资源Id">
+					<params type="param">
+						<param name="sourceId" type="java.lang.String" />
+					</params>
+					<hql>p.sourceId.id = ?</hql>
+				</condition>
+				<condition id="version" describe="版本">
+					<params type="param">
+						<param name="version" type="java.lang.String" />
+					</params>
+					<hql>p.version like ?</hql>
+				</condition>
+				<condition id="downPayment" describe="首付">
+					<params type="param">
+						<param name="downPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>p.downPayment like ?</hql>
+				</condition>
+				<condition id="proportion" describe="分成比例">
+					<params type="param">
+						<param name="proportion" type="java.lang.String" />
+					</params>
+					<hql>p.proportion = ?</hql>
+				</condition>
+				<condition id="tradeDate" describe="交易时间">
+					<params type="param">
+						<param name="tradeDate" type="java.util.Date" />
+					</params>
+					<hql>p.tradeDate = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by p.tradeDate desc </order>
+			<className>cn.digitalpublishing.po.PublishTrade</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from PublishTrade p</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="sourceId" describe="资源Id">
+					<params type="param">
+						<param name="sourceId" type="java.lang.String" />
+					</params>
+					<hql>p.sourceId.id = ?</hql>
+				</condition>
+				<condition id="version" describe="版本">
+					<params type="param">
+						<param name="version" type="java.lang.String" />
+					</params>
+					<hql>p.version like ?</hql>
+				</condition>
+				<condition id="downPayment" describe="首付">
+					<params type="param">
+						<param name="downPayment" type="java.math.BigDecimal" />
+					</params>
+					<hql>p.downPayment like ?</hql>
+				</condition>
+				<condition id="proportion" describe="分成比例">
+					<params type="param">
+						<param name="proportion" type="java.lang.String" />
+					</params>
+					<hql>p.proportion = ?</hql>
+				</condition>
+				<condition id="tradeDate" describe="交易时间">
+					<params type="date">
+						<param name="tradeDate" type="java.util.Date" />
+					</params>
+					<hql>p.tradeDate like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PublishTrade</className>
+		</query>
+		
+	</dao>
+</web-query>

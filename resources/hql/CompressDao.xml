@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CompressZipDao">
+		<query>
+			<id>getCompressPagingList</id>
+			<method>getCompressPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,remark,price,path, status, dateTime</properties>
+			<fields>c.id,c.name,c.remark,c.price,c.path, c.status, c.dateTime</fields>
+			<hql>from Compress c</hql>
+			<conditions>
+				<condition id="name" describe="包名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>c.name like ?</hql>
+				</condition>
+				<condition id="remark" describe="简介">
+					<params type="param">
+						<param name="remark" type="java.lang.String" />
+					</params>
+					<hql>c.remark like ?</hql>
+				</condition>
+				 <condition id="dateTime" describe="生成时间">
+					<params type="param">
+						<param name="dateTime" type="java.util.Date" />
+					</params>
+					<hql>c.dateTime = ?</hql>
+				</condition> 
+			</conditions>
+			<group></group>
+			<order> order by c.dateTime desc </order>
+			<className>cn.digitalpublishing.po.Compress</className>
+		</query>
+		
+		<query>
+			<id>getCompressCount</id>
+			<method>getCompressCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from Compress c</hql>
+			<conditions>
+				<condition id="name" describe="包名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>c.name like ?</hql>
+				</condition>
+				<condition id="remark" describe="简介">
+					<params type="param">
+						<param name="remark" type="java.lang.String" />
+					</params>
+					<hql>c.remark like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Compress</className>
+		</query>
+	</dao>
+</web-query>

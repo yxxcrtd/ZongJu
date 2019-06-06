@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.digitalpublishing.po.Section" table="T_SECTION">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32">
+            	<comment>id</comment>
+            </column>
+            <generator class="assigned" />
+        </id>
+        
+        <property name="number" type="java.lang.String">
+        	<column name="number" length="64">
+        		<comment>图书节名称</comment>
+        	</column>
+        </property>
+        
+        <property name="name" type="java.lang.String">
+        	<column name="name" length="64">
+        		<comment>图书节名称</comment>
+        	</column>
+        </property>
+        
+        <property name="updateTime" type="java.util.Date">
+        	<column name="updateTime">
+        		<comment>更新时间</comment>
+        	</column>
+        </property>
+        
+        <property name="createTime" type="java.util.Date">
+        	<column name="createTime">
+        		<comment>更新时间</comment>
+        	</column>
+        </property>
+        
+        <property name="content" type="text">
+        	<column name="content" length="16777216">
+        		<comment>图书节内容</comment>
+        	</column>
+        </property>
+        
+        <property name="noStyleContent" type="text">
+        	<column name="noStyleContent" length="16777216">
+        		<comment>没有样式的图书节内容</comment>
+        	</column>
+        </property>
+        
+        <property name="flowStatus" type="java.lang.String">
+        	<column name="flowStatus" length="32">
+        		<comment>审批状态</comment>
+        	</column>
+        </property>
+        
+        <property name="coder" type="java.lang.String">
+        	<column name="coder" length="64">
+        		<comment>审批状态</comment>
+        	</column>
+        </property>
+        
+        <many-to-one name="chapter" class="cn.digitalpublishing.po.Chapter">
+        	<column name="chapterid"></column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

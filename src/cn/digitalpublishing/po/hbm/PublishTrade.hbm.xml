@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.digitalpublishing.po.PublishTrade" table="T_PUBLISHTRADE">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32">
+            	<comment>id</comment>
+            </column>
+            <generator class="uuid.hex" />
+        </id>
+        
+        <many-to-one name="sourceId" class="cn.digitalpublishing.po.PProduct" lazy="false" fetch="select">
+            <column name="sourceId" length="32" />
+        </many-to-one>
+        
+        <property name="version" type="java.lang.String">
+        	<column name="version" length="32">
+        		<comment>版本</comment>
+        	</column>
+        </property>
+        
+        <property name="downPayment" type="java.math.BigDecimal">
+        	<column name="downPayment" precision="10" scale="2">
+        		<comment>首付</comment>
+        	</column>
+        </property>
+        
+        <property name="proportion" type="java.lang.String">
+        	<column name="proportion" length="16">
+        		<comment>分成比例</comment>
+        	</column>
+        </property>
+        
+        <property name="tradeDate" type="java.util.Date">
+        	<column name="tradeDate" length="32">
+        		<comment>交易时间</comment>
+        	</column>
+        </property>
+    </class>
+</hibernate-mapping>

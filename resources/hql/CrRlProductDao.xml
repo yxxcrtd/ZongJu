@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlProductDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rlpId, product.id, product.isbn, product.title</properties>
+			<fields>a.rlpId, a.product.id, a.product.isbn, a.product.title</fields>
+			<hql>from CrRlProduct a</hql>
+			<conditions>
+				<condition id="rlpId" discribe="授权与产品关系ID">
+					<params type="param">
+						<param name="rlpId" type="java.lang.String" />
+					</params>
+					<hql>a.rlpId = ?</hql>
+				</condition>
+			
+				<condition id="sellOutPeriod" discribe="逾期销售约定">
+					<params type="param">
+						<param name="sellOutPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.sellOutPeriod = ?</hql>
+				</condition>
+				
+				<condition id="returnMonth" discribe="逾期退货约定">
+					<params type="param">
+						<param name="returnMonth" type="java.lang.Integer" />
+					</params>
+					<hql>a.returnMonth = ?</hql>
+				</condition>
+				
+				<condition id="printMonth" discribe="逾期加印约定">
+					<params type="param">
+						<param name="printMonth" type="java.lang.Integer" />
+					</params>
+					<hql>a.printMonth = ?</hql>
+				</condition>
+				
+				<condition id="right_rlicenseId" discribe="权利授权ID">
+					<params type="param">
+						<param name="right_rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlProduct</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>rlpId, firstSaleDate, sellOutPeriod, returnMonth, printMonth, lastEndDate, coprightEndDate, expiredDate, product.isbn, product.title, status</properties>
+			<fields>a.rlpId, a.firstSaleDate, a.sellOutPeriod, a.returnMonth, a.printMonth, a.lastEndDate, a.coprightEndDate, a.expiredDate, a.product.isbn, a.product.title, (select name from BDic z where z.id = a.status)</fields>
+			<hql>from CrRlProduct a</hql>
+			<conditions>
+				<condition id="rlpId" discribe="授权与产品关系ID">
+					<params type="param">
+						<param name="rlpId" type="java.lang.String" />
+					</params>
+					<hql>a.rlpId = ?</hql>
+				</condition>
+			
+				<condition id="sellOutPeriod" discribe="逾期销售约定">
+					<params type="param">
+						<param name="sellOutPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.sellOutPeriod = ?</hql>
+				</condition>
+				
+				<condition id="returnMonth" discribe="逾期退货约定">
+					<params type="param">
+						<param name="returnMonth" type="java.lang.Integer" />
+					</params>
+					<hql>a.returnMonth = ?</hql>
+				</condition>
+				
+				<condition id="printMonth" discribe="逾期加印约定">
+					<params type="param">
+						<param name="printMonth" type="java.lang.Integer" />
+					</params>
+					<hql>a.printMonth = ?</hql>
+				</condition>
+				
+				<condition id="right_rlicenseId" discribe="权利授权产品ID">
+					<params type="param">
+						<param name="right_rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlProduct</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rlpId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlProduct a</hql>
+			<conditions>
+				<condition id="rlpId" discribe="授权与产品关系ID">
+					<params type="param">
+						<param name="rlpId" type="java.lang.String" />
+					</params>
+					<hql>a.rlpId = ?</hql>
+				</condition>
+			
+				<condition id="sellOutPeriod" discribe="逾期销售约定">
+					<params type="param">
+						<param name="sellOutPeriod" type="java.lang.Integer" />
+					</params>
+					<hql>a.sellOutPeriod = ?</hql>
+				</condition>
+				
+				<condition id="returnMonth" discribe="逾期退货约定">
+					<params type="param">
+						<param name="returnMonth" type="java.lang.Integer" />
+					</params>
+					<hql>a.returnMonth = ?</hql>
+				</condition>
+				
+				<condition id="printMonth" discribe="逾期加印约定">
+					<params type="param">
+						<param name="printMonth" type="java.lang.Integer" />
+					</params>
+					<hql>a.printMonth = ?</hql>
+				</condition>
+				
+				<condition id="right_rlicenseId" discribe="权利授权产品ID">
+					<params type="param">
+						<param name="right_rlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.right.rlicenseId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlProduct</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlOwnerPayee" table="CR_RL_OWNER_PAYEE">
+		<comment>付款对象</comment>
+		<id name="feePayeeId" type="java.lang.String">
+			<column name="CR_FEE_PAYEE_ID" length="32">
+				<comment>付款对象ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="feePayeePercent" type="java.math.BigDecimal">
+			<column name="CR_FEE_PAYEE_PERCENT" precision="10" scale="2">
+				<comment>付款对象比率</comment>
+			</column>
+		</property>
+		<property name="feePayeeReason" type="java.lang.String">
+			<column name="CR_FEE_PAYEE_REASON" length="512">
+				<comment>付款对象原因</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CR_STATUS" length="32">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<many-to-one name="rlOwner" class="cn.digitalpublishing.po.CrRlOwner" fetch="select" lazy="false">
+			<column name="CR_RLOWNER_ID" length="32">
+				<comment>授权者ID</comment>
+			</column>
+		</many-to-one>
+<!-- 		<many-to-one name="currency" class="cn.digitalpublishing.po.BCurrency" fetch="select" lazy="false"> -->
+<!-- 			<column name="B_CURRENCY_ID" length="32"> -->
+<!-- 				<comment>币种信息ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+<!-- 		<many-to-one name="personTypeRelationship" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false"> -->
+<!-- 			<column name="CRM_PERSON_TYPE_ID" length="32"> -->
+<!-- 				<comment>人员类型角色ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlProduct" table="CR_RL_PRODUCT">
+		<comment>权利授权产品</comment>
+		<id name="rlpId" type="java.lang.String">
+			<column name="CR_RLP_ID" length="32">
+				<comment>授权与产品关系ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="firstSaleDate" type="java.util.Date">
+			<column name="CR_FIRST_SALE_DATE">
+				<comment>首次销售日期约定</comment>
+			</column>
+		</property>
+		<property name="sellOutPeriod" type="java.lang.Integer">
+			<column name="CR_SELL_OUT_PERIOD">
+				<comment>逾期销售约定</comment>
+			</column>
+		</property>
+		<property name="returnMonth" type="java.lang.Integer">
+			<column name="CR_RETURN_MONTH">
+				<comment>逾期退货约定</comment>
+			</column>
+		</property>
+		<property name="printMonth" type="java.lang.Integer">
+			<column name="CR_PRINT_MONTH">
+				<comment>逾期加印约定</comment>
+			</column>
+		</property>
+		<property name="lastEndDate" type="java.util.Date">
+			<column name="CR_LAST_END_DATE">
+				<comment>上期结束时间</comment>
+			</column>
+		</property>
+		<property name="coprightEndDate" type="java.util.Date">
+			<column name="CR_COPRIGHT_END_DATE">
+				<comment>版权到期时间</comment>
+			</column>
+		</property>
+		<property name="expiredDate" type="java.util.Date">
+			<column name="CR_EXPIRED_DATE">
+				<comment>过期时间</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CR_STATUS">
+				<comment>版税产品状态</comment>
+			</column>
+		</property>
+		<many-to-one name="right" class="cn.digitalpublishing.po.CrRight" fetch="select" lazy="false">
+			<column name="CR_RLICENSE_ID" length="32">
+				<comment>权利授权ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<set name="rlOwnerSet" inverse="true">
+			<key>
+				<column name="CR_RLP_ID" length="32">
+					<comment>授权与产品关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlOwner" />
+		</set>
+	</class>
+</hibernate-mapping>

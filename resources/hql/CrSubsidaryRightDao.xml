@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.CrSubsidaryRightDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>srlicenseId,structureType.name,structure.name,personTypeRelationship.person.name,product.title,licenseType.licenseTypeName,retainPercent,ownerPercent,initRate,adjustRule,royaltyRule,level,status</properties>
+			<fields>a.srlicenseId,f.name,g.name,e.name,c.title,b.licenseTypeName,a.retainPercent,a.ownerPercent,a.initRate,(select name from BDic z where z.id=a.adjustRule),(select name from BDic z where z.id=a.royaltyRule),(select name from BDic z where z.id=a.level),(select name from BDic z where z.id=a.status)</fields>
+			<hql>from CrSubsidaryRight a left join a.licenseType b left join a.product c left join a.personTypeRelationship d left join d.person e left join a.structureType f left join a.structure g </hql>
+			<conditions>
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> a.status = ? </hql>
+				</condition>
+                <condition id="level" describe="level">
+                    <params type="param">
+                        <param name="level" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.level = ? </hql>
+                </condition>
+                
+                <condition id="right_rlicenseId" describe="权利授权ID">
+                    <params type="param">
+                        <param name="right_rlicenseId" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.right.rlicenseId = ? </hql>
+                </condition>
+                
+			</conditions>
+			<group></group>
+			<order> </order>
+			<className>cn.digitalpublishing.po.CrSubsidaryRight</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>srlicenseId,retainPercent,ownerPercent,initRate,adjustRule,royaltyRule,level,status</properties>
+			<fields>a.srlicenseId,a.retainPercent,a.ownerPercent,a.initRate,a.adjustRule,a.royaltyRule,a.level,a.status</fields>
+			<hql>from CrSubsidaryRight a</hql>
+			<conditions>
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> a.status = ? </hql>
+				</condition>
+                <condition id="level" describe="level">
+                    <params type="param">
+                        <param name="level" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.level = ? </hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrSubsidaryRight</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>srlicenseId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrSubsidaryRight a</hql>
+			<conditions>
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> a.status = ? </hql>
+				</condition>
+                <condition id="level" describe="level">
+                    <params type="param">
+                        <param name="level" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.level = ? </hql>
+                </condition>
+                
+                <condition id="right_rlicenseId" describe="权利授权ID">
+                    <params type="param">
+                        <param name="right_rlicenseId" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.right.rlicenseId = ? </hql>
+                </condition>
+                
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrSubsidaryRight</className>
+		</query>
+	</dao>
+</web-query>

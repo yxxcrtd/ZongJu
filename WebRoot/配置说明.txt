@@ -1,0 +1,21 @@
+
+1，配置数据库连接：proxool.xml
+
+2，配置数据库方言：config.properties
+
+3，配置访问IP或域名以及端口：
+	1，修改webgate数据库中的表sys_component；
+	2，修改webgate中的web.xml中的3个配置（resourceURL，functionURL，promptURL）；
+	3，修改本地web.xml中的修改webgate访问路径。
+	
+4，配置资源碎片化：param.properties中的product.structure.element.path。
+	1，配置上传目录，先在某磁盘下创建upload文件夹，再在upload下创建一个dest空文件夹，用于存放碎片化后的xml文件；
+	2，在系统后台添加一条资源，此时会在upload目录下生成一个以ISBN命名的文件夹，然后将刚创建资源的XML元数据文件Main.xml放入其中，其全路径是：D:\upload\123894LA-ASD\Main.xml（123894LA-ASD是图书的ISBN；元数据命名必须是：Main.xml）；
+
+5，配置PDF转换：在param.properties中指定swftools安装目录下的pdf2swf.exe全路径，如：C:\swftools\pdf2swf.exe；
+
+6，配置PDF转换的中文支持：将项目根下的“PDF转SWF中文支持包.zip”拷贝到系统任意目录，然后在param.properties中指定路径即可；
+
+7，在D:\Tomcat\conf\server.xml中配置虚拟访问路径：<Context path="/upload" docBase="D:\upload" />
+
+8，配置C:\swftools\xpdf\chinesesimplified\add-to-xpdfrc中的路径（参考：PDF转SWF中文支持包.zip）

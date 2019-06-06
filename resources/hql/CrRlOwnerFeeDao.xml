@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlOwnerFeeDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>fixfeeId, expenseType, fixfeeVal</properties>
+			<fields>a.fixfeeId, a.expenseType, a.fixfeeVal</fields>
+			<hql>from CrRlOwnerFee a</hql>
+			<conditions>
+				<condition id="fixfeeId" discribe="费用ID">
+					<params type="param">
+						<param name="fixfeeId" type="java.lang.String" />
+					</params>
+					<hql>a.fixfeeId = ?</hql>
+				</condition>
+			
+				<condition id="expenseType" discribe="费用类型">
+					<params type="param">
+						<param name="expenseType" type="java.lang.String" />
+					</params>
+					<hql>a.expenseType like ?</hql>
+				</condition>
+				
+				<condition id="fixfeeVal" discribe="费用值">
+					<params type="param">
+						<param name="fixfeeVal" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.fixfeeVal = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerFee</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>fixfeeId, expenseType, fixfeeVal, currency.currencyName</properties>
+			<fields>a.fixfeeId, (select name from BDic e where e.id = a.expenseType), a.fixfeeVal, a.currency.currencyName</fields>
+			<hql>from CrRlOwnerFee a</hql>
+			<conditions>
+				<condition id="fixfeeId" discribe="费用ID">
+					<params type="param">
+						<param name="fixfeeId" type="java.lang.String" />
+					</params>
+					<hql>a.fixfeeId = ?</hql>
+				</condition>
+			
+				<condition id="expenseType" discribe="费用类型">
+					<params type="param">
+						<param name="expenseType" type="java.lang.String" />
+					</params>
+					<hql>a.expenseType like ?</hql>
+				</condition>
+				
+				<condition id="fixfeeVal" discribe="费用值">
+					<params type="param">
+						<param name="fixfeeVal" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.fixfeeVal = ?</hql>
+				</condition>
+				
+				<condition id="rlOwner_rlownerId" discribe="权利授权者ID">
+					<params type="param">
+						<param name="rlOwner_rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwner.rlownerId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerFee</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>fixfeeId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlOwnerFee a</hql>
+			<conditions>
+				<condition id="fixfeeId" discribe="费用ID">
+					<params type="param">
+						<param name="fixfeeId" type="java.lang.String" />
+					</params>
+					<hql>a.fixfeeId = ?</hql>
+				</condition>
+			
+				<condition id="expenseType" discribe="费用类型">
+					<params type="param">
+						<param name="expenseType" type="java.lang.String" />
+					</params>
+					<hql>a.expenseType like ?</hql>
+				</condition>
+				
+				<condition id="fixfeeVal" discribe="费用值">
+					<params type="param">
+						<param name="fixfeeVal" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.fixfeeVal = ?</hql>
+				</condition>
+				
+				<condition id="rlOwner_rlownerId" discribe="权利授权者ID">
+					<params type="param">
+						<param name="rlOwner_rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwner.rlownerId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerFee</className>
+		</query>
+	</dao>
+</web-query>

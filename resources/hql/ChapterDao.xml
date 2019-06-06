@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.ChapterDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, bookName, bookAbstract,content,updateTime,flowStatus</properties>
+			<fields>a.id, a.bookName, a.bookAbstract,a.content,a.updateTime,a.flowStatus</fields>
+			<hql>from Chapter a</hql>
+			<conditions>
+				<condition id="userid" describe="用户id">
+					<params type="param">
+						<param name="userid" type="java.lang.String" />
+					</params>
+					<hql>a.user.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Chapter</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, name, number,updateTime,flowStatus</properties>
+			<fields>a.id, a.name, a.number,a.updateTime,a.flowStatus</fields>
+			<hql>from Chapter a</hql>
+			<conditions>
+				<condition id="articleid" describe="图书id">
+					<params type="param">
+						<param name="articleid" type="java.lang.String" />
+					</params>
+					<hql>a.article.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+				order by a.coder asc
+			</order>
+			<className>cn.digitalpublishing.po.Chapter</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Chapter a</hql>
+			<conditions>
+				<condition id="number" describe="章数">
+					<params type="param">
+						<param name="number" type="java.lang.String" />
+					</params>
+					<hql>a.number = ?</hql>
+				</condition>
+				
+				<condition id="isnotown" describe="节数">
+					<params type="param">
+						<param name="isnotown" type="java.lang.String" />
+					</params>
+					<hql>a.id <![CDATA[<]]><![CDATA[>]]> ?</hql>
+				</condition>
+				
+				<condition id="articleid" describe="articleid">
+					<params type="param">
+						<param name="articleid" type="java.lang.String" />
+					</params>
+					<hql>a.article.id = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Chapter</className>
+		</query>
+	</dao>
+</web-query>

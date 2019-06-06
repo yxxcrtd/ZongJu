@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <dao id="cn.digitalpublishing.dao.PProductLicenseDao">
+
+
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="sort" type="java.lang.String"></param>
+                <param name="condition" type="java.util.Map"></param>
+            </params>
+            <properties>
+                licenseId,licenseType,licenseName,licenseStartOn,licenseEndOn,licenseMax,licenseMode,productType.id
+            </properties>
+            <fields>
+                a.licenseId,a.licenseType,a.licenseName,a.licenseStartOn,a.licenseEndOn,a.licenseMax,a.licenseMode,b.id
+            </fields>
+            <hql>from PProductLicense a left join a.productType b</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="name" describe="公司类型属性名称">
+                    <params type="param">
+                        <param name="name" type="java.lang.String" />
+                    </params>
+                    <hql>a.licenseName like  ?</hql>
+                </condition>
+                <condition id="tid" discribe="ID">
+                    <params type="param">
+                        <param name="tid" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProductLicense</className>
+        </query>
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                licenseId,licenseType,licenseName,licenseStartOn,licenseEndOn,licenseMax,licenseMode,productType.id
+            </properties>
+            <fields>
+                a.licenseId,(select x.name from BDic x where x.id = a.licenseType),a.licenseName,a.licenseStartOn,a.licenseEndOn,a.licenseMax,(select y.name from BDic y where y.id = a.licenseMode),b.id
+
+            </fields>
+            <hql>from PProductLicense a left join a.productType b</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="tid" discribe="ID">
+                    <params type="param">
+                        <param name="tid" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="name" describe="公司类型属性名称">
+                    <params type="param">
+                        <param name="name" type="java.lang.String" />
+                    </params>
+                    <hql>a.licenseName like  ?</hql>
+                </condition>
+
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProductLicense</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"/>
+            </params>
+            <properties>licenseId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from PProductLicense a left join a.productType b</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="name" describe="公司类型属性名称">
+                    <params type="param">
+                        <param name="name" type="java.lang.String" />
+                    </params>
+                    <hql>a.licenseName like  ?</hql>
+                </condition>
+                <condition id="code" describe="产品类型编号">
+                    <params type="param">
+                        <param name="code" type="java.lang.String"/>
+                    </params>
+                    <hql>b.code = ?</hql>
+                </condition>
+                <condition id="tid" discribe="ID">
+                    <params type="param">
+                        <param name="tid" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProductLicense</className>
+        </query>
+    </dao>
+</web-query>

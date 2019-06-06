@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductLicense" table="P_PRODUCT_LICENSE">
+		<id name="licenseId" type="java.lang.String">
+			<column name="P_LICENSE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="licenseType" type="java.lang.String">
+			<column name="P_LICENSE_TYPE" length="32">
+				<comment>产品许可类型</comment>
+			</column>
+		</property>
+		<property name="licenseName" type="java.lang.String">
+			<column name="P_LICENSE_NAME" length="32">
+				<comment>产品许可名称</comment>
+			</column>
+		</property>
+		<property name="licenseStartOn" type="java.util.Date">
+			<column name="P_LICENSE_START_ON">
+				<comment>产品许可开始时间</comment>
+			</column>
+		</property>
+		<property name="licenseEndOn" type="java.util.Date">
+			<column name="P_LICENSE_END_ON">
+				<comment>产品许可结束时间</comment>
+			</column>
+		</property>
+        <property name="licenseMax" type="java.lang.Integer">
+            <column name="P_LICENSE_MAX">
+                <comment>产品许可并发数</comment>
+            </column>
+        </property>
+        <property name="licenseMode" type="java.lang.String">
+            <column name="P_LICENSE_MODE" length="32">
+                <comment>产品许可授权方式</comment>
+            </column>
+        </property>
+		<many-to-one name="productType" class="cn.digitalpublishing.po.PProductType" fetch="select" lazy="false">
+			<column name="P_PTYPE_ID" length="32">
+				<comment>产品类型ID</comment>
+			</column>
+		</many-to-one>
+		<set name="productSet" inverse="true">
+			<key>
+				<column name="P_LICENSE_ID" length="32">
+					<comment>产品许可ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProduct" />
+		</set>
+	</class>
+</hibernate-mapping>

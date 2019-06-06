@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.ArticleDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, bookName, bookAbstract,updateTime,pdfPath,flowStatus</properties>
+			<fields>a.id, a.bookName, a.bookAbstract,a.updateTime,a.pdfPath,a.flowStatus</fields>
+			<hql>from Article a</hql>
+			<conditions>
+				<condition id="userid" describe="用户id">
+					<params type="param">
+						<param name="userid" type="java.lang.String" />
+					</params>
+					<hql>a.user.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Article</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from Article a</hql>
+			<conditions>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Article</className>
+		</query>
+	</dao>
+</web-query>

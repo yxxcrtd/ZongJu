@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.CrContractDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> contractId,contractType,contractName,contractDate,contractSource,contractReason,contractExpired,contractDays,contractStatus,contractLicenseDuration,contractLicenseStartOn,contractLicenseEndOn,
+						contractLicenseOption, contractAuthorCount,contractProxyCount,contractBailAmount, contractMaxAmount,contractMinAmount,contractProxyAmount  </properties>
+			<fields> a.contractId,(select z.name from BDic z where z.id = a.contractType),a.contractName,a.contractDate,a.contractSource,a.contractReason,a.contractExpired,a.contractDays,a.contractStatus,a.contractLicenseDuration,a.contractLicenseStartOn,a.contractLicenseEndOn,
+					a.contractLicenseOption, a.contractAuthorCount,a.contractProxyCount,a.contractBailAmount, a.contractMaxAmount,a.contractMinAmount,a.contractProxyAmount </fields>
+			<hql>from CrContract a  </hql>
+			<conditions>
+				<condition id="contractId" describe="contractId">
+					<params type="param">
+						<param name="contractId" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractId = ?</hql>
+				</condition>
+				<condition id="contractType" describe="contractType">
+					<params type="param">
+						<param name="contractType" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractType = ?</hql>
+				</condition>
+				<condition id="contractName" describe="contractId">
+					<params type="param">
+						<param name="contractName" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractName = ?</hql>
+				</condition>
+				<condition id="contractDate" describe="contractId">
+					<params type="param">
+						<param name="contractDate" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractDate = ?</hql>
+				</condition>
+				<condition id="contractSource" describe="contractSource">
+					<params type="param">
+						<param name="contractSource" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractSource = ?</hql>
+				</condition>
+				<condition id="contractReason" describe="contractReason">
+					<params type="param">
+						<param name="contractReason" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractReason = ?</hql>
+				</condition>
+				<condition id="contractExpired" describe="contractExpired">
+					<params type="param">
+						<param name="contractExpired" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractExpired = ?</hql>
+				</condition>
+				<condition id="contractDays" describe="contractDays">
+					<params type="param">
+						<param name="contractDays" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractDays = ?</hql>
+				</condition>
+				<condition id="contractStatus" describe="contractStatus">
+					<params type="param">
+						<param name="contractStatus" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractStatus = ?</hql>
+				</condition>
+				<condition id="contractLicenseDuration" describe="contractLicenseDuration">
+					<params type="param">
+						<param name="contractLicenseDuration" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractLicenseDuration = ?</hql>
+				</condition>
+				 <condition id="contractLicenseStartOn" describe="contractLicenseStartOn">
+					<params type="param">
+						<param name="contractLicenseStartOn" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractLicenseStartOn = ?</hql>
+				</condition>
+				<condition id="contractLicenseEndOn" describe="contractLicenseEndOn">
+					<params type="param">
+						<param name="contractLicenseEndOn" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractLicenseEndOn = ?</hql>
+				</condition>
+				<condition id="contractLicenseOption" describe="contractLicenseOption">
+					<params type="param">
+						<param name="contractLicenseOption" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractLicenseOption = ?</hql>
+				</condition>
+				<condition id="contractAuthorCount" describe="contractAuthorCount">
+					<params type="param">
+						<param name="contractAuthorCount" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractAuthorCount = ?</hql>
+				</condition>
+				<condition id="contractProxyCount" describe="contractProxyCount">
+					<params type="param">
+						<param name="contractProxyCount" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractProxyCount = ?</hql>
+				</condition>
+				<condition id="contractBailAmount" describe="contractBailAmount">
+					<params type="param">
+						<param name="contractBailAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractBailAmount = ?</hql>
+				</condition>
+				<condition id="contractMaxAmount" describe="contractMaxAmount">
+					<params type="param">
+						<param name="contractMaxAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractMaxAmount = ?</hql>
+				</condition>
+				<condition id="contractMinAmount" describe="contractMinAmount">
+					<params type="param">
+						<param name="contractMinAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractMinAmount = ?</hql>
+				</condition>
+				<condition id="contractProxyAmount" describe="contractProxyAmount">
+					<params type="param">
+						<param name="contractProxyAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractProxyAmount = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.contractId</order>
+			<className>cn.digitalpublishing.po.CrContract</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>contractId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrContract a </hql>
+			<conditions>
+				<condition id="contractId" describe="contractId">
+					<params type="param">
+						<param name="contractId" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractId = ?</hql>
+				</condition>
+				<condition id="contractType" describe="contractType">
+					<params type="param">
+						<param name="contractType" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractType = ?</hql>
+				</condition>
+				<condition id="contractName" describe="contractId">
+					<params type="param">
+						<param name="contractName" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractName = ?</hql>
+				</condition>
+				<condition id="contractDate" describe="contractId">
+					<params type="param">
+						<param name="contractDate" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractDate = ?</hql>
+				</condition>
+				<condition id="contractSource" describe="contractSource">
+					<params type="param">
+						<param name="contractSource" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractSource = ?</hql>
+				</condition>
+				<condition id="contractReason" describe="contractReason">
+					<params type="param">
+						<param name="contractReason" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractReason = ?</hql>
+				</condition>
+				<condition id="contractExpired" describe="contractExpired">
+					<params type="param">
+						<param name="contractExpired" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractExpired = ?</hql>
+				</condition>
+				<condition id="contractDays" describe="contractDays">
+					<params type="param">
+						<param name="contractDays" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractDays = ?</hql>
+				</condition>
+				<condition id="contractStatus" describe="contractStatus">
+					<params type="param">
+						<param name="contractStatus" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractStatus = ?</hql>
+				</condition>
+				<condition id="contractLicenseDuration" describe="contractLicenseDuration">
+					<params type="param">
+						<param name="contractLicenseDuration" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractLicenseDuration = ?</hql>
+				</condition>
+				 <condition id="contractLicenseStartOn" describe="contractLicenseStartOn">
+					<params type="param">
+						<param name="contractLicenseStartOn" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractLicenseStartOn = ?</hql>
+				</condition>
+				<condition id="contractLicenseEndOn" describe="contractLicenseEndOn">
+					<params type="param">
+						<param name="contractLicenseEndOn" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractLicenseEndOn = ?</hql>
+				</condition>
+				<condition id="contractLicenseOption" describe="contractLicenseOption">
+					<params type="param">
+						<param name="contractLicenseOption" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractLicenseOption = ?</hql>
+				</condition>
+				<condition id="contractAuthorCount" describe="contractAuthorCount">
+					<params type="param">
+						<param name="contractAuthorCount" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractAuthorCount = ?</hql>
+				</condition>
+				<condition id="contractProxyCount" describe="contractProxyCount">
+					<params type="param">
+						<param name="contractProxyCount" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractProxyCount = ?</hql>
+				</condition>
+				<condition id="contractBailAmount" describe="contractBailAmount">
+					<params type="param">
+						<param name="contractBailAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractBailAmount = ?</hql>
+				</condition>
+				<condition id="contractMaxAmount" describe="contractMaxAmount">
+					<params type="param">
+						<param name="contractMaxAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractMaxAmount = ?</hql>
+				</condition>
+				<condition id="contractMinAmount" describe="contractMinAmount">
+					<params type="param">
+						<param name="contractMinAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractMinAmount = ?</hql>
+				</condition>
+				<condition id="contractProxyAmount" describe="contractProxyAmount">
+					<params type="param">
+						<param name="contractProxyAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractProxyAmount = ?</hql>
+				</condition>
+				<condition id="productId" describe="productId">
+					<params type="param">
+						<param name="productId" type="java.lang.String"></param>
+					</params>
+					<hql>  not exists( from PProductContractRelationship z where z.contract.contractId = a.contractId and z.product.id = ?) </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.contractId</order>
+			<className>cn.digitalpublishing.po.CrContract</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>contractId,contractType,contractName,contractDate,contractSource,contractReason,contractExpired,contractDays,contractStatus,contractLicenseDuration,contractLicenseStartOn,contractLicenseEndOn,
+						contractLicenseOption, contractAuthorCount,contractProxyCount,contractBailAmount, contractMaxAmount,contractMinAmount,contractProxyAmount  </properties>
+			<fields> a.contractId,(select z.name from BDic z where z.id = a.contractType),a.contractName,a.contractDate,a.contractSource,a.contractReason,a.contractExpired,a.contractDays,a.contractStatus,a.contractLicenseDuration,a.contractLicenseStartOn,a.contractLicenseEndOn,
+					a.contractLicenseOption, a.contractAuthorCount,a.contractProxyCount,a.contractBailAmount, a.contractMaxAmount,a.contractMinAmount,a.contractProxyAmount </fields>
+			<hql>from CrContract a  </hql>
+			<conditions>
+				<condition id="contractId" describe="contractId">
+					<params type="param">
+						<param name="contractId" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractId = ?</hql>
+				</condition>
+				<condition id="contractType" describe="contractType">
+					<params type="param">
+						<param name="contractType" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractType = ?</hql>
+				</condition>
+				<condition id="contractName" describe="contractId">
+					<params type="param">
+						<param name="contractName" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractName = ?</hql>
+				</condition>
+				<condition id="contractDate" describe="contractId">
+					<params type="param">
+						<param name="contractDate" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractDate = ?</hql>
+				</condition>
+				<condition id="contractSource" describe="contractSource">
+					<params type="param">
+						<param name="contractSource" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractSource = ?</hql>
+				</condition>
+				<condition id="contractReason" describe="contractReason">
+					<params type="param">
+						<param name="contractReason" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractReason = ?</hql>
+				</condition>
+				<condition id="contractExpired" describe="contractExpired">
+					<params type="param">
+						<param name="contractExpired" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractExpired = ?</hql>
+				</condition>
+				<condition id="contractDays" describe="contractDays">
+					<params type="param">
+						<param name="contractDays" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractDays = ?</hql>
+				</condition>
+				<condition id="contractStatus" describe="contractStatus">
+					<params type="param">
+						<param name="contractStatus" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractStatus = ?</hql>
+				</condition>
+				<condition id="contractLicenseDuration" describe="contractLicenseDuration">
+					<params type="param">
+						<param name="contractLicenseDuration" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractLicenseDuration = ?</hql>
+				</condition>
+				 <condition id="contractLicenseStartOn" describe="contractLicenseStartOn">
+					<params type="param">
+						<param name="contractLicenseStartOn" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractLicenseStartOn = ?</hql>
+				</condition>
+				<condition id="contractLicenseEndOn" describe="contractLicenseEndOn">
+					<params type="param">
+						<param name="contractLicenseEndOn" type="java.util.Date"></param>
+					</params>
+					<hql> a.contractLicenseEndOn = ?</hql>
+				</condition>
+				<condition id="contractLicenseOption" describe="contractLicenseOption">
+					<params type="param">
+						<param name="contractLicenseOption" type="java.lang.String"></param>
+					</params>
+					<hql> a.contractLicenseOption = ?</hql>
+				</condition>
+				<condition id="contractAuthorCount" describe="contractAuthorCount">
+					<params type="param">
+						<param name="contractAuthorCount" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractAuthorCount = ?</hql>
+				</condition>
+				<condition id="contractProxyCount" describe="contractProxyCount">
+					<params type="param">
+						<param name="contractProxyCount" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.contractProxyCount = ?</hql>
+				</condition>
+				<condition id="contractBailAmount" describe="contractBailAmount">
+					<params type="param">
+						<param name="contractBailAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractBailAmount = ?</hql>
+				</condition>
+				<condition id="contractMaxAmount" describe="contractMaxAmount">
+					<params type="param">
+						<param name="contractMaxAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractMaxAmount = ?</hql>
+				</condition>
+				<condition id="contractMinAmount" describe="contractMinAmount">
+					<params type="param">
+						<param name="contractMinAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractMinAmount = ?</hql>
+				</condition>
+				<condition id="contractProxyAmount" describe="contractProxyAmount">
+					<params type="param">
+						<param name="contractProxyAmount" type="java.math.BigDecimal"></param>
+					</params>
+					<hql> a.contractProxyAmount = ?</hql>
+				</condition>
+				
+				<condition id="productId" describe="productId">
+					<params type="param">
+						<param name="productId" type="java.lang.String"></param>
+					</params>
+					<hql>  not exists (from PProductContractRelationship z where z.contract.contractId = a.contractId and z.product.id = ?) </hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order>order by a.contractId</order>
+			<className>cn.digitalpublishing.po.CrContract</className>
+		</query>
+		
+	</dao>
+</web-query>

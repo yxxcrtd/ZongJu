@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.Copyright" table="T_COPYRIGHT">
+		<id name="id" type="java.lang.String">
+			<column name="CopyrightID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		
+		<many-to-one name="sourceId" class="cn.digitalpublishing.po.PProduct" lazy="false" fetch="select">
+            <column name="sourceId" length="32" />
+        </many-to-one>
+		
+		<property name="belong" type="java.lang.String">
+			<column name="CopyrightBelong" length="64">
+				<comment>版权所有人</comment>
+			</column>
+		</property>
+		
+		<property name="property" type="java.lang.String">
+			<column name="CopyrightProperty" length="128">
+				<comment>版权所属地</comment>
+			</column>
+		</property>
+		
+		<property name="startDate" type="java.util.Date">
+			<column name="startDate" length="32">
+				<comment>版权开始日期</comment>
+			</column>
+		</property>
+		
+		<property name="endDate" type="java.util.Date">
+			<column name="endDate" length="32">
+				<comment>版权结束日期</comment>
+			</column>
+		</property>
+		
+		<property name="under" type="java.lang.String">
+			<column name="CopyrightUnder" length="128">
+				<comment>版权归属</comment>
+			</column>
+		</property>
+
+	</class>
+</hibernate-mapping>

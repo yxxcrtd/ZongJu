@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductDao">
+		<query>
+			<id>getByIsbn</id>
+			<method>getByIsbn</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,code,isbn,status,translation,title,subTitle,pubYear,pubName,pubBy,editorName,editorBy,price,pageNum,edition,binding,language,remark,keyword</properties>
+			<fields>a.id,a.code,a.isbn,a.status,a.translation,a.title,a.subTitle,a.pubYear,a.pubName,a.pubBy,a.editorName,a.editorBy,a.price,a.pageNum,a.edition,a.binding,a.language,a.remark,a.keyword</fields>
+			<hql>from PProduct a</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>a.isbn = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProduct</className>
+		</query>
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,isbn,status,translation,title,subTitle,pubYear,pubName,pubBy,editorName,editorBy,price,pageNum,edition,binding,language,remark,keyword,author,publisher,bookCovers,datePublication,productType.id,productType.name,objName,objId</properties>
+			<fields>a.id,a.isbn,a.status,a.translation,a.title,a.subTitle,a.pubYear,a.pubName,a.pubBy,a.editorName,a.editorBy,a.price,a.pageNum,a.edition,a.binding,a.language,a.remark,a.keyword,a.author,a.publisher,a.bookCovers,a.datePublication,b.id,b.name,a.objName,a.objId</fields>
+			<hql>from PProduct a left join a.productType b</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+                <condition id="productType" describe="产品类型">
+                    <params type="param">
+                        <param name="productType" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="flowStatus" discribe="状态">
+                    <params type="param">
+                        <param name="flowStatus" type="java.lang.String" />
+                    </params>
+                    <hql>a.flowStatus = ?</hql>
+                </condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>a.isbn = ?</hql>
+				</condition>
+				<condition id="isbns" describe="ISBN">
+					<params type="param">
+						<param name="isbns" type="java.lang.String" array="true" arrayMark="#X1"></param>
+					</params>
+					<hql>a.isbn in #X1 </hql>
+				</condition>
+                <condition id="objId" discribe="状态">
+                    <params type="param">
+                        <param name="objId" type="java.lang.String" />
+                    </params>
+                    <hql>a.objId = ?</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProduct</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,isbn,translation,title,subTitle,pubYear,pubName,pubBy,editorName,editorBy,price,pageNum,author,publisher,datePublication,edition,binding,language,remark,keyword,marcFlag,productType.code,productType.id,productType.name,bookCovers,bookPDFOriginName,createOn,user.id,user.username,objName,objId,identityId,twoDimension</properties>
+			<fields>a.id,a.isbn,a.translation,a.title,a.subTitle,a.pubYear,a.pubName,a.pubBy,a.editorName,a.editorBy,a.price,a.pageNum,a.author,a.publisher,a.datePublication,a.edition,(select name from BDic z where z.id=a.binding),a.language,a.remark,a.keyword,(select name from BDic z where z.id=a.marcFlag),b.code,b.id,b.name,a.bookCovers,a.bookPDFOriginName,a.createOn,u.id,u.username,a.objName,a.objId,a.identityId,a.twoDimension</fields>
+			<hql>from PProduct a left join a.productType b left join a.parentProduct c left join a.user u</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+                <condition id="flowStatus" discribe="状态">
+                    <params type="param">
+                        <param name="flowStatus" type="java.lang.String" />
+                    </params>
+                    <hql>a.flowStatus = ?</hql>
+                </condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>a.isbn like ?</hql>
+				</condition>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>b.code = ?</hql>
+				</condition>
+				<condition id="title" describe="题名">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>a.title like ?</hql>
+				</condition>
+				<condition id="keyword" describe="关键词">
+					<params type="param">
+						<param name="keyword" type="java.lang.String" />
+					</params>
+					<hql>a.keyword like ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>a.author like ?</hql>
+				</condition>
+				<condition id="publisher" describe="出版社">
+					<params type="param">
+						<param name="publisher" type="java.lang.String" />
+					</params>
+					<hql>a.publisher like ?</hql>
+				</condition>
+                <condition id="productTypeId" describe="产品类别">
+                    <params type="param">
+                        <param name="productTypeId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="flowStatus" describe="立项状态">
+                    <params type="param">
+                        <param name="flowStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.flowStatus = ?</hql>
+                </condition>
+                <condition id="parentId" describe="立项状态">
+                    <params type="param">
+                        <param name="parentId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+                <condition id="someFlowStatus" describe="names">
+                    <params type="param">
+                        <param name="someFlowStatus" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.flowStatus in #X1</hql>
+                </condition>
+
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProduct</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from PProduct a left join a.productType b left join a.parentProduct c</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>b.code = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+                <condition id="flowStatus" discribe="状态">
+                    <params type="param">
+                        <param name="flowStatus" type="java.lang.String" />
+                    </params>
+                    <hql>a.flowStatus = ?</hql>
+                </condition>
+				<condition id="tid" discribe="产品类型">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>a.isbn like ?</hql>
+				</condition>
+				<condition id="author" describe="作者">
+					<params type="param">
+						<param name="author" type="java.lang.String" />
+					</params>
+					<hql>a.author like ?</hql>
+				</condition>
+				<condition id="title" describe="题名">
+					<params type="param">
+						<param name="title" type="java.lang.String" />
+					</params>
+					<hql>a.title like ?</hql>
+				</condition>
+				<condition id="publisher" describe="出版社">
+					<params type="param">
+						<param name="publisher" type="java.lang.String" />
+					</params>
+					<hql>a.publisher like ?</hql>
+				</condition>
+				<condition id="keyword" describe="关键词">
+					<params type="param">
+						<param name="keyword" type="java.lang.String" />
+					</params>
+					<hql>a.keyword like ?</hql>
+				</condition>
+                <condition id="productType" describe="产品类别">
+                    <params type="param">
+                        <param name="productType" type="java.lang.String"/>
+                    </params>
+                    <hql>b.code = ?</hql>
+                </condition>
+                <condition id="productTypeId" describe="产品类别">
+                    <params type="param">
+                        <param name="productTypeId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="flowStatus" describe="立项状态">
+                    <params type="param">
+                        <param name="flowStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.flowStatus = ?</hql>
+                </condition>
+                <condition id="parentId" describe="立项状态">
+                    <params type="param">
+                        <param name="parentId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+                <condition id="someFlowStatus" describe="names">
+                    <params type="param">
+                        <param name="someFlowStatus" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.flowStatus in #X1</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProduct</className>
+		</query>
+	</dao>
+</web-query>

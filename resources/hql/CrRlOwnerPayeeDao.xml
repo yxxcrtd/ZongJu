@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlOwnerPayeeDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>feePayeeId, feePayeePercent, feePayeeReason, status</properties>
+			<fields>a.feePayeeId, a.feePayeePercent, a.feePayeeReason, a.status</fields>
+			<hql>from CrRlOwnerPayee a</hql>
+			<conditions>
+				<condition id="feePayeeId" discribe="付款对象ID">
+					<params type="param">
+						<param name="feePayeeId" type="java.lang.String" />
+					</params>
+					<hql>a.feePayeeId = ?</hql>
+				</condition>
+			
+				<condition id="feePayeePercent" discribe="付款对象比率">
+					<params type="param">
+						<param name="feePayeePercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.feePayeePercent = ?</hql>
+				</condition>
+				
+				<condition id="feePayeeReason" discribe="付款对象原因">
+					<params type="param">
+						<param name="feePayeeReason" type="java.lang.String" />
+					</params>
+					<hql>a.feePayeeReason like ?</hql>
+				</condition>
+				
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerPayee</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>feePayeeId, feePayeePercent, feePayeeReason, status, currency.currencyName, personTypeRelationship.person.name</properties>
+			<fields>a.feePayeeId, a.feePayeePercent, a.feePayeeReason, (select name from BDic e where e.id = a.status), a.currency.currencyName, a.personTypeRelationship.person.name</fields>
+			<hql>from CrRlOwnerPayee a</hql>
+			<conditions>
+				<condition id="feePayeeId" discribe="付款对象ID">
+					<params type="param">
+						<param name="feePayeeId" type="java.lang.String" />
+					</params>
+					<hql>a.feePayeeId = ?</hql>
+				</condition>
+			
+				<condition id="feePayeePercent" discribe="付款对象比率">
+					<params type="param">
+						<param name="feePayeePercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.feePayeePercent = ?</hql>
+				</condition>
+				
+				<condition id="feePayeeReason" discribe="付款对象原因">
+					<params type="param">
+						<param name="feePayeeReason" type="java.lang.String" />
+					</params>
+					<hql>a.feePayeeReason like ?</hql>
+				</condition>
+				
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status like ?</hql>
+				</condition>
+				
+				<condition id="rlOwner_rlownerId" discribe="权利授权者ID">
+					<params type="param">
+						<param name="rlOwner_rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwner.rlownerId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerPayee</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>feePayeeId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlOwnerPayee a</hql>
+			<conditions>
+				<condition id="feePayeeId" discribe="付款对象ID">
+					<params type="param">
+						<param name="feePayeeId" type="java.lang.String" />
+					</params>
+					<hql>a.feePayeeId = ?</hql>
+				</condition>
+			
+				<condition id="feePayeePercent" discribe="付款对象比率">
+					<params type="param">
+						<param name="feePayeePercent" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.feePayeePercent = ?</hql>
+				</condition>
+				
+				<condition id="feePayeeReason" discribe="付款对象原因">
+					<params type="param">
+						<param name="feePayeeReason" type="java.lang.String" />
+					</params>
+					<hql>a.feePayeeReason like ?</hql>
+				</condition>
+				
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status like ?</hql>
+				</condition>
+				
+				<condition id="rlOwner_rlownerId" discribe="权利授权者ID">
+					<params type="param">
+						<param name="rlOwner_rlownerId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwner.rlownerId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlOwnerPayee</className>
+		</query>
+	</dao>
+</web-query>

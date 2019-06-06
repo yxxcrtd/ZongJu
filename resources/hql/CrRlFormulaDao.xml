@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrRlFormulaDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>formulaId, breakPoint, rateValue, formulaType</properties>
+			<fields>a.formulaId, a.breakPoint, a.rateValue, a.formulaType</fields>
+			<hql>from CrRlFormula a</hql>
+			<conditions>
+				<condition id="formulaId" discribe="版税公式ID">
+					<params type="param">
+						<param name="formulaId" type="java.lang.String" />
+					</params>
+					<hql>a.formulaId = ?</hql>
+				</condition>
+			
+				<condition id="breakPoint" discribe="分割值">
+					<params type="param">
+						<param name="breakPoint" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.breakPoint = ?</hql>
+				</condition>
+				
+				<condition id="rateValue" discribe="比率值">
+					<params type="param">
+						<param name="rateValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.rateValue = ?</hql>
+				</condition>
+				
+				<condition id="formulaType" discribe="公式类型">
+					<params type="param">
+						<param name="formulaType" type="java.lang.Integer" />
+					</params>
+					<hql>a.formulaType = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlFormula</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>formulaId, breakPoint, rateValue, formulaType</properties>
+			<fields>a.formulaId, a.breakPoint, a.rateValue, (select name from BDic e where e.id = a.formulaType)</fields>
+			<hql>from CrRlFormula a</hql>
+			<conditions>
+				<condition id="formulaId" discribe="版税公式ID">
+					<params type="param">
+						<param name="formulaId" type="java.lang.String" />
+					</params>
+					<hql>a.formulaId = ?</hql>
+				</condition>
+			
+				<condition id="breakPoint" discribe="分割值">
+					<params type="param">
+						<param name="breakPoint" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.breakPoint = ?</hql>
+				</condition>
+				
+				<condition id="rateValue" discribe="比率值">
+					<params type="param">
+						<param name="rateValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.rateValue = ?</hql>
+				</condition>
+				
+				<condition id="formulaType" discribe="公式类型">
+					<params type="param">
+						<param name="formulaType" type="java.lang.String" />
+					</params>
+					<hql>a.formulaType = ?</hql>
+				</condition>
+				
+				<condition id="rlOwnerRoyalty_rloRoyaltyId" discribe="人员版税计算规则ID">
+					<params type="param">
+						<param name="rlOwnerRoyalty_rloRoyaltyId" type="java.lang.String" />
+					</params>
+					<hql>a.rlOwnerRoyalty.rloRoyaltyId = ?</hql>
+				</condition>
+				
+				<condition id="subsidaryRight_srlicenseId" discribe="版税附属权利">
+					<params type="param">
+						<param name="subsidaryRight_srlicenseId" type="java.lang.String" />
+					</params>
+					<hql>a.subsidaryRight.srlicenseId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlFormula</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>formulaId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrRlFormula a</hql>
+			<conditions>
+				<condition id="formulaId" discribe="版税公式ID">
+					<params type="param">
+						<param name="formulaId" type="java.lang.String" />
+					</params>
+					<hql>a.formulaId = ?</hql>
+				</condition>
+			
+				<condition id="breakPoint" discribe="分割值">
+					<params type="param">
+						<param name="breakPoint" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.breakPoint = ?</hql>
+				</condition>
+				
+				<condition id="rateValue" discribe="比率值">
+					<params type="param">
+						<param name="rateValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.rateValue = ?</hql>
+				</condition>
+				
+				<condition id="formulaType" discribe="公式类型">
+					<params type="param">
+						<param name="formulaType" type="java.lang.Integer" />
+					</params>
+					<hql>a.formulaType = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrRlFormula</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRight" table="CR_RIGHT">
+		<comment>权利授权</comment>
+		<id name="rlicenseId" type="java.lang.String">
+			<column name="CR_RLICENSE_ID" length="32">
+				<comment>权利授权ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="rlicenseName" type="java.lang.String">
+			<column name="CR_RLICENSE_NAME" length="128">
+				<comment>权利授权名称</comment>
+			</column>
+		</property>
+		<property name="rlicenseReference" type="java.lang.String">
+			<column name="CR_RLICENSE_REFERENCE" length="256">
+				<comment>权利授权备注</comment>
+			</column>
+		</property>
+		<property name="rlicenseNum" type="java.lang.Integer">
+			<column name="CR_RLICENSE_NUM">
+				<comment>授权量</comment>
+			</column>
+		</property>
+		<property name="rlicenseStarton" type="java.util.Date">
+			<column name="CR_RLICENSE_STARTON">
+				<comment>授权开始时间</comment>
+			</column>
+		</property>
+		<property name="rlicenseEndon" type="java.util.Date">
+			<column name="CR_RLICENSE_ENDON">
+				<comment>授权结束时间</comment>
+			</column>
+		</property>
+		<property name="manuscriptDelivery" type="java.util.Date">
+			<column name="CR_MANUSCRIPT_DELIVERY">
+				<comment>稿件提交日期</comment>
+			</column>
+		</property>
+		<property name="pubDeadline" type="java.lang.Integer">
+			<column name="CR_PUB_DEADLINE">
+				<comment>出版期限</comment>
+			</column>
+		</property>
+		<property name="owerCopy" type="java.lang.Integer">
+			<column name="CR_OWER_COPY">
+				<comment>作者副本数</comment>
+			</column>
+		</property>
+		<property name="agentCopy" type="java.lang.Integer">
+			<column name="CR_AGENT_COPY">
+				<comment>代理商副本数</comment>
+			</column>
+		</property>
+		<property name="guaranteePayment" type="java.math.BigDecimal">
+			<column name="CR_GUARANTEE_PAYMENT" precision="10" scale="2">
+				<comment>保证金</comment>
+			</column>
+		</property>
+		<property name="maxPayment" type="java.math.BigDecimal">
+			<column name="CR_MAX_PAYMENT" precision="10" scale="2">
+				<comment>最大付款</comment>
+			</column>
+		</property>
+		<property name="minPayment" type="java.math.BigDecimal">
+			<column name="CR_MIN_PAYMENT" precision="10" scale="2">
+				<comment>最小付款</comment>
+			</column>
+		</property>
+		<property name="agentPercent" type="java.math.BigDecimal">
+			<column name="CR_AGENT_PERCENT" precision="10" scale="2">
+				<comment>代理费比率</comment>
+			</column>
+		</property>
+		<property name="lastedDate" type="java.util.Date">
+			<column name="CR_LASTED_DATE">
+				<comment>最近结算日期</comment>
+			</column>
+		</property>
+		<property name="paymentTrem" type="java.lang.Integer">
+			<column name="CR_PAYMENT_TREM">
+				<comment>付款条款</comment>
+			</column>
+		</property>
+		<property name="firstCloseDate" type="java.util.Date">
+			<column name="CR_FIRST_CLOSE_DATE">
+				<comment>首次结算报告期限</comment>
+			</column>
+		</property>
+		<property name="retainPercent" type="java.math.BigDecimal">
+			<column name="CR_RETAIN_PERCENT" precision="10" scale="2">
+				<comment>每次预留百分比</comment>
+			</column>
+		</property>
+		<property name="minRetain" type="java.math.BigDecimal">
+			<column name="CR_MIN_RETAIN" precision="10" scale="2">
+				<comment>每次最小预留</comment>
+			</column>
+		</property>
+		<property name="retainPeriod" type="java.lang.Integer">
+			<column name="CR_RETAIN_PERIOD">
+				<comment>预留期次</comment>
+			</column>
+		</property>
+		<property name="retainUntil" type="java.lang.Integer">
+			<column name="CR_RETAIN_UNTIL">
+				<comment>预留到期次</comment>
+			</column>
+		</property>
+		<property name="periodNum" type="java.lang.Integer">
+			<column name="CR_PERIOD_NUM">
+				<comment>当前期次</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CR_STATUS" length="32">
+				<comment>权利合同状态</comment>
+			</column>
+		</property>
+		<property name="rcexclusive" type="java.lang.String">
+			<column name="CR_RCEXCLUSIVE" length="32">
+				<comment>权利是否独享</comment>
+			</column>
+		</property>
+		<property name="start" type="java.lang.String">
+			<column name="CR_START" length="32">
+				<comment>授权开始方式</comment>
+			</column>
+		</property>
+		<property name="rlperiod" type="java.lang.String">
+			<column name="CR_RLPERIOD" length="32">
+				<comment>结算公告周期</comment>
+			</column>
+		</property>
+		<many-to-one name="licenseType" class="cn.digitalpublishing.po.CrLicenseType" fetch="select" lazy="false">
+			<column name="CR_LICENSE_TYPE_ID" length="32">
+				<comment>授权类型ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="contract" class="cn.digitalpublishing.po.CrContract" fetch="select" lazy="false">
+			<column name="CR_CONTRACT_ID" length="32">
+				<comment>合同ID</comment>
+			</column>
+		</many-to-one>
+<!-- 		<many-to-one name="proposal" class="cn.digitalpublishing.po.PProposal" fetch="select" lazy="false"> -->
+<!-- 			<column name="PROPOSAL_ID" length="32"> -->
+<!-- 				<comment>策划ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+		<set name="crcRelationshipSet" inverse="true">
+			<key>
+				<column name="CR_RLICENSE_ID" length="32">
+					<comment>权利授权ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrCrcRelationship" />
+		</set>
+		<set name="lrcRelationshipSet" inverse="true">
+			<key>
+				<column name="CR_RLICENSE_ID" length="32">
+					<comment>权利授权ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrLrcRelationship" />
+		</set>
+		<set name="rlProductSet" inverse="true">
+			<key>
+				<column name="CR_RLICENSE_ID" length="32">
+					<comment>权利授权ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlProduct" />
+		</set>
+		<set name="subsidaryRightSet" inverse="true">
+			<key>
+				<column name="CR_RLICENSE_ID" length="32">
+					<comment>权利授权ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrSubsidaryRight" />
+		</set>
+	</class>
+</hibernate-mapping>

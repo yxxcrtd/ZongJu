@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.BDicClassDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,internationCode,status</properties>
+			<fields>a.id,a.code,a.name,a.internationCode,a.status</fields>
+			<hql>from BDicClass a</hql>
+			<conditions>
+				<condition id="code" describe="数据字典分类编号">
+					<params type="code">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="数据字典分类名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="internationCode" describe="国际化参数">
+					<params type="param">
+						<param name="internationCode" type="java.lang.String" />
+					</params>
+					<hql>a.internationCode like  ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BDicClass</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from BDicClass a</hql>
+			<conditions>
+				<condition id="id" describe="数据字典分类ID">
+					<params type="code">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="code" describe="数据字典分类编号">
+					<params type="code">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="数据字典分类名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="internationCode" describe="国际化参数">
+					<params type="param">
+						<param name="internationCode" type="java.lang.String" />
+					</params>
+					<hql>a.internationCode like  ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BDicClass</className>
+		</query>
+		
+		<query>
+			<id>getDicClassList</id>
+			<method>getDicClassList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,internationCode,status</properties>
+			<fields>a.id,a.code,a.name,a.internationCode,a.status</fields>
+			<hql>from BDicClass a</hql>
+			<conditions>
+				<condition id="code" describe="数据字典分类编号">
+					<params type="code">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+				<condition id="name" describe="数据字典分类名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="internationCode" describe="国际化参数">
+					<params type="param">
+						<param name="internationCode" type="java.lang.String" />
+					</params>
+					<hql>a.internationCode like  ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BDicClass</className>
+		</query>
+		
+	</dao>
+</web-query>

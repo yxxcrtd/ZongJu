@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlFixfeePaymentTerm" table="CR_RL_FIXFEE_PAYMENT_TERM">
+		<comment>固定费用付款条款</comment>
+		<id name="fixfeePayId" type="java.lang.String">
+			<column name="CR_FIXFEE_PAY_ID" length="32">
+				<comment>固定费用付款条款ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="payDueDate" type="java.util.Date">
+			<column name="CR_PAY_DUE_DATE">
+				<comment>预计时间</comment>
+			</column>
+		</property>
+		<property name="paidDate" type="java.util.Date">
+			<column name="CR_PAID_DATE">
+				<comment>付款日期</comment>
+			</column>
+		</property>
+		<property name="paidReference" type="java.lang.String">
+			<column name="CR_PAID_REFERENCE" length="128">
+				<comment>付款参考</comment>
+			</column>
+		</property>
+		<property name="invoiceNumber" type="java.lang.String">
+			<column name="CR_INVOICE_NUMBER" length="128">
+				<comment>发票编号</comment>
+			</column>
+		</property>
+		<property name="invoiceDate" type="java.util.Date">
+			<column name="CR_INVOICE_DATE">
+				<comment>发票日期</comment>
+			</column>
+		</property>
+		<many-to-one name="rlOwnerFee" class="cn.digitalpublishing.po.CrRlOwnerFee" fetch="select" lazy="false">
+			<column name="CR_FIXFEE_ID" length="32">
+				<comment>费用ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrLrcRelationship" table="CR_LRC_RELATIONSHIP">
+		<comment>语种权利合同关系</comment>
+		<id name="id" type="java.lang.String">
+			<column name="LRC_ID" length="32">
+				<comment>语种权利合同关系ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		
+		<many-to-one name="language" class="cn.digitalpublishing.po.BDic" fetch="select" lazy="false">
+			<column name="CR_RIGHT_LANGUAGE" length="32">
+				<comment>权利授权ID</comment>
+			</column>
+		</many-to-one>
+		
+		<many-to-one name="right" class="cn.digitalpublishing.po.CrRight" fetch="select" lazy="false">
+			<column name="CR_RLICENSE_ID" length="32">
+				<comment>权利授权ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

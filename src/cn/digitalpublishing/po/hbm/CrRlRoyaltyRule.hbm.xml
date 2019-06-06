@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlRoyaltyRule" table="CR_RL_ROYALTY_RULE">
+		<comment>版税规则库</comment>
+		<id name="royaltyRuleId" type="java.lang.String">
+			<column name="CR_ROYALTY_RULE_ID" length="32">
+				<comment>版税规则ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="royaltyRuleName" type="java.lang.String">
+			<column name="CR_ROYALTY_RULE_NAME" length="128">
+				<comment>规则名称</comment>
+			</column>
+		</property>
+		<property name="royaltyRuleCode" type="java.lang.String">
+			<column name="CR_ROYALTY_RULE_CODE" length="32">
+				<comment>规则编号</comment>
+			</column>
+		</property>
+		<property name="royaltyRuleLock" type="java.lang.Boolean">
+			<column name="CR_ROYALTY_RULE_LOCK">
+				<comment>规则锁定</comment>
+			</column>
+		</property>
+		<property name="royaltyText" type="java.lang.String">
+			<column name="CR_ROYALTY_TEXT" length="256">
+				<comment>版税信息</comment>
+			</column>
+		</property>
+		<property name="royaltyDiscount" type="java.math.BigDecimal">
+			<column name="CR_ROYALTY_DISCOUNT" precision="10" scale="2">
+				<comment>版税折扣</comment>
+			</column>
+		</property>
+		<property name="reserveReturn" type="java.lang.Boolean">
+			<column name="CR_RESERVE_RETURN">
+				<comment>退货预留</comment>
+			</column>
+		</property>
+		<property name="royaltyIndividual" type="java.lang.Boolean">
+			<column name="CR_ROYALTY_INDIVIDUAL">
+				<comment>独特的</comment>
+			</column>
+		</property>
+		<property name="chapterRateRise" type="java.lang.Integer">
+			<column name="CR_CHAPTER_RATE_RISE">
+				<comment>意率上升</comment>
+			</column>
+		</property>
+		<property name="market" type="java.lang.String">
+			<column name="CR_MARKET" length="32">
+				<comment>市场</comment>
+			</column>
+		</property>
+		<property name="priceType" type="java.lang.String">
+			<column name="CR_PRICE_TYPE" length="32">
+				<comment>价格类型</comment>
+			</column>
+		</property>
+		<property name="taxDescription" type="java.lang.String">
+			<column name="CR_TAX_DESCRIPTION" length="32">
+				<comment>税务说明</comment>
+			</column>
+		</property>
+		<property name="rulesState" type="java.lang.String">
+			<column name="CR_RULES_STATE" length="32">
+				<comment>规则状态</comment>
+			</column>
+		</property>
+		<property name="royaltyType" type="java.lang.String">
+			<column name="CR_ROYALTY_TYPE" length="32">
+				<comment>版税类型</comment>
+			</column>
+		</property>
+		<set name="rlOwnerRoyaltySet" inverse="true">
+			<key>
+				<column name="CR_ROYALTY_RULE_ID" length="32">
+					<comment>版税规则ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlOwnerRoyalty" />
+		</set>
+	</class>
+</hibernate-mapping>

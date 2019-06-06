@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.RechargeDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,user.id,money,tradeDate</properties>
+			<fields>r.id,r.user.id,r.money,r.tradeDate</fields>
+			<hql>from Recharge r</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>r.id = ?</hql>
+				</condition>
+				<condition id="userId" describe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>r.user.id = ?</hql>
+				</condition>
+				<condition id="tradeDate" describe="充值时间">
+					<params type="date">
+						<param name="tradeDate" type="java.util.Date" />
+					</params>
+					<hql>r.tradeDate = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by r.tradeDate DESC </order>
+			<className>cn.digitalpublishing.po.Recharge</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from Recharge r</hql>
+			<conditions>
+			    <condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>r.id = ?</hql>
+				</condition>
+				<condition id="userId" describe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>r.user.id = ?</hql>
+				</condition>
+				<condition id="tradeDate" describe="充值时间">
+					<params type="date">
+						<param name="tradeDate" type="java.util.Date" />
+					</params>
+					<hql>r.tradeDate = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Recharge</className>
+		</query>
+		
+	</dao>
+</web-query>

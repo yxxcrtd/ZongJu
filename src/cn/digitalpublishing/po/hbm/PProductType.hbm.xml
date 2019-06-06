@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductType" table="P_PRODUCT_TYPE">
+		<id name="id" type="java.lang.String">
+			<column name="P_PTYPE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="P_PTYPE_NAME" length="64">
+				<comment>产品类型名称</comment>
+			</column>
+		</property>
+		<property name="code" type="java.lang.String">
+			<column name="P_PTYPE_CODE" length="32">
+				<comment>产品类型编号</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="P_PTYPE_ORDER">
+				<comment>产品类型排序</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="P_PTYPE_STATUS" length="32">
+				<comment>产品类型状态</comment>
+			</column>
+		</property>
+		<property name="treeCode" type="java.lang.String">
+			<column name="P_PTYPE_TREE_CODE" length="32">
+				<comment>产品类型树形编码</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="P_PTYPE_INTERNATION_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		
+		<!-- 仅仅是查询用 -->
+		<property name="parentId" type="java.lang.String" insert="false" update="false">
+			<column name="P_PTYPE_PARENT_ID" length="32">
+				<comment>父ID</comment>
+			</column>
+		</property>
+		
+		<many-to-one name="parentProductType" class="cn.digitalpublishing.po.PProductType" fetch="select" lazy="false">
+			<column name="P_PTYPE_PARENT_ID" length="32">
+				<comment>产品类型ID</comment>
+			</column>
+		</many-to-one>
+		<set name="productTypeSet" inverse="true">
+			<key>
+				<column name="P_PTYPE_PARENT_ID" length="32">
+					<comment>产品类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductType" />
+		</set>
+		<set name="productSet" inverse="true">
+			<key>
+				<column name="P_PRODUCT_TYPE_ID" length="32">
+					<comment>产品类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProduct" />
+		</set>
+	</class>
+</hibernate-mapping>

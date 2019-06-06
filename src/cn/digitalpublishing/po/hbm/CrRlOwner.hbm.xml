@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrRlOwner" table="CR_RL_OWNER">
+		<comment>权利授权者</comment>
+		<id name="rlownerId" type="java.lang.String">
+			<column name="CR_RLOWNER_ID" length="32">
+				<comment>授权者ID</comment>
+			</column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="lastedDate" type="java.util.Date">
+			<column name="CR_LASTED_DATE">
+				<comment>最近结算日期</comment>
+			</column>
+		</property>
+		<property name="owerCopy" type="java.lang.Integer">
+			<column name="CR_OWER_COPY">
+				<comment>作者副本数</comment>
+			</column>
+		</property>
+		<property name="agentCopy" type="java.lang.Integer">
+			<column name="CR_AGENT_COPY">
+				<comment>代理商副本数</comment>
+			</column>
+		</property>
+		<property name="owerDiscount" type="java.math.BigDecimal">
+			<column name="CR_OWER_DISCOUNT" precision="10" scale="2">
+				<comment>作者购买折扣</comment>
+			</column>
+		</property>
+		<property name="paymentTrem" type="java.lang.Integer">
+			<column name="CR_PAYMENT_TREM">
+				<comment>付款条款</comment>
+			</column>
+		</property>
+		<property name="ownerPercent" type="java.math.BigDecimal">
+			<column name="CR_OWNER_PERCENT" precision="10" scale="2">
+				<comment>所占百分比</comment>
+			</column>
+		</property>
+		<property name="retainPeriod" type="java.lang.Integer">
+			<column name="CR_RETAIN_PERIOD">
+				<comment>预留期次</comment>
+			</column>
+		</property>
+		<property name="retainUntil" type="java.lang.Integer">
+			<column name="CR_RETAIN_UNTIL">
+				<comment>预留到期次</comment>
+			</column>
+		</property>
+		<property name="rlperiod" type="java.lang.String">
+			<column name="CR_RLPERIOD" length="32">
+				<comment>版税报告周期</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CR_STATUS" length="32">
+				<comment>贡献者状态</comment>
+			</column>
+		</property>
+		<property name="retainPercent" type="java.math.BigDecimal">
+			<column name="CR_RETAIN_PERCENT" precision="10" scale="2">
+				<comment>每次预留百分比</comment>
+			</column>
+		</property>
+		<property name="minRetain" type="java.math.BigDecimal">
+			<column name="CR_MIN_RETAIN" precision="10" scale="2">
+				<comment>每次最小预留</comment>
+			</column>
+		</property>
+		<many-to-one name="rlProduct" class="cn.digitalpublishing.po.CrRlProduct" fetch="select" lazy="false">
+			<column name="CR_RLP_ID" length="32">
+				<comment>授权与产品关系ID</comment>
+			</column>
+		</many-to-one>
+<!-- 		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false"> -->
+<!-- 			<column name="CRM_CORP_TYPE_ID" length="32"> -->
+<!-- 				<comment>公司类型角色关系ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+<!-- 		<many-to-one name="personTrtr" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false"> -->
+<!-- 			<column name="CRM_PERSON_TYPE_TR_ID" length="32"> -->
+<!-- 				<comment>人员类型角色ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+<!-- 		<many-to-one name="personTrcr" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false"> -->
+<!-- 			<column name="CRM_PERSON_TYPE_CR_ID" length="32"> -->
+<!-- 				<comment>人员类型角色ID</comment> -->
+<!-- 			</column> -->
+<!-- 		</many-to-one> -->
+		<set name="rlOwnerFeeSet" inverse="true">
+			<key>
+				<column name="CR_RLOWNER_ID" length="32">
+					<comment>授权者ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlOwnerFee" />
+		</set>
+		<set name="rlOwnerPayeeSet" inverse="true">
+			<key>
+				<column name="CR_RLOWNER_ID" length="32">
+					<comment>授权者ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlOwnerPayee" />
+		</set>
+		<set name="rlOwnerRoyaltySet" inverse="true">
+			<key>
+				<column name="CR_RLOWNER_ID" length="32">
+					<comment>授权者ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrRlOwnerRoyalty" />
+		</set>
+	</class>
+</hibernate-mapping>

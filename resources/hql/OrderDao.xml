@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.OrderDao">
+	
+		<!-- 获取当前用户的订单数 -->
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from Order o</hql>
+			<conditions>
+			    <condition id="userId" discribe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>o.userId = ?</hql>
+				</condition>
+				<condition id="status" describe="订单状态">
+					<params type="param">
+						<param name="status" type="java.lang.Integer" />
+					</params>
+					<hql>o.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Order</className>
+		</query>
+		
+		<!-- 获取当前的订单表 -->
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, tradeNumber, money, status, createDate, product.id, product.title, product.bookCovers, secretKey</properties>
+			<fields>o.id, o.tradeNumber, o.money, o.status, o.createDate, b.id, b.title, b.bookCovers, o.secretKey</fields>
+			<hql>from Order o left join o.product b</hql>
+			<conditions>
+			    <condition id="userId" discribe="用户ID">
+					<params type="param">
+						<param name="userId" type="java.lang.String" />
+					</params>
+					<hql>o.userId = ?</hql>
+				</condition>
+				<condition id="product" describe="产品">
+					<params type="param">
+						<param name="product" type="java.lang.String"/>
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="status" describe="订单状态">
+					<params type="param">
+						<param name="status" type="java.lang.Integer" />
+					</params>
+					<hql>o.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.Order</className>
+		</query>
+		
+	</dao>
+</web-query>
